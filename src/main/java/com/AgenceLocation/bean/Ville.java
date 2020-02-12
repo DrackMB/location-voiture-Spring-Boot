@@ -27,9 +27,9 @@ public class Ville implements Serializable {
     private Long id;
     private String nom;
     private double code;
-    @OneToMany
-    private Pays pays;
     @ManyToOne
+    private Pays pays;
+    @OneToMany(mappedBy = "ville")
     private List<Agence> agences;
 
     public String getNom() {
