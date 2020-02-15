@@ -1,0 +1,48 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.AgenceLocation.WebService;
+
+import com.AgenceLocation.Service.facad.MarqueService;
+import com.AgenceLocation.bean.Marque;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ *
+ * @author HP
+ */
+@RestController
+@RequestMapping("agencelocation/marque")
+public class MarqueRest {
+    
+     @Autowired
+    private MarqueService marqueService;
+    
+    @PostMapping("/")
+    public int save(@RequestBody Marque marque) {
+       return marqueService.save(marque);
+      
+    }
+
+    @GetMapping("/")
+    public List<Marque> findAll() {
+        return marqueService.findAll();
+    }
+
+    @GetMapping("/libelle/{libelle}")
+    public Marque findByLibelle(String libelle) {
+        return marqueService.findByLibelle(libelle);
+    }
+  
+    
+    
+    
+}
