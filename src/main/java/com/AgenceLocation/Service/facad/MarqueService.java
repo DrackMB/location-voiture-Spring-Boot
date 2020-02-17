@@ -13,8 +13,11 @@ import java.util.List;
  * @author HP
  */
 public interface MarqueService {
+
     int save(Marque marque);
-    List<Marque>findAll();
+
+    List<Marque> findAll();
+
     Marque findByLibelle(String libelle);
-    
+
 }

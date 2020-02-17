@@ -10,11 +10,13 @@ import com.AgenceLocation.Service.facad.VoitureService;
 import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author HP
  */
+@Service
 public class VoitureServiceImpl implements VoitureService{
     
     @Autowired

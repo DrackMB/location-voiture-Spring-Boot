@@ -5,11 +5,13 @@
  */
 package com.AgenceLocation.WebService;
 
+
 import com.AgenceLocation.Service.facad.MarqueService;
 import com.AgenceLocation.bean.Marque;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +40,7 @@ public class MarqueRest {
     }
 
     @GetMapping("/libelle/{libelle}")
-    public Marque findByLibelle(String libelle) {
+    public Marque findByLibelle(@PathVariable String libelle) {
         return marqueService.findByLibelle(libelle);
     }
   

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.AgenceLocation.Repository;
 
 import com.AgenceLocation.bean.Marque;
@@ -13,7 +12,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author HP
  */
-public interface MarqueRepository extends JpaRepository<Marque,Long>{
+public interface MarqueRepository extends JpaRepository<Marque, Long> {
+
     Marque findByLibelle(String libelle);
 
 }

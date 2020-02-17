@@ -5,18 +5,18 @@
  */
 package com.AgenceLocation.Service.impl;
 
-import com.AgenceLocation.Repository.CategorieRepository;
 import com.AgenceLocation.Repository.MarqueRepository;
 import com.AgenceLocation.Service.facad.MarqueService;
-import com.AgenceLocation.bean.Categorie;
 import com.AgenceLocation.bean.Marque;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author HP
  */
+@Service
 public class MarqueServiceImpl implements MarqueService{
     
     @Autowired

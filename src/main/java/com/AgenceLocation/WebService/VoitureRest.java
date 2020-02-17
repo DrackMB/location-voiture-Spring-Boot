@@ -10,6 +10,7 @@ import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,7 @@ public class VoitureRest {
     }
 
     @GetMapping("/matricule/{matricule}")
-    public Voiture findByMatricule(String matricule) {
+    public Voiture findByMatricule(@PathVariable String matricule) {
         return voitureService.findByMatricule(matricule);
     }
     
