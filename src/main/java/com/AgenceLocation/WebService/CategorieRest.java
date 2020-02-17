@@ -33,7 +33,7 @@ public class CategorieRest {
       
     }
 
-    @GetMapping("/")
+    @GetMapping("/find")
     public List<Categorie> findAll() {
         return categorieService.findAll();
     }
