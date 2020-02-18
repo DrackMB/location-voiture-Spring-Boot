@@ -5,14 +5,12 @@
  */
 package com.AgenceLocation.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -27,17 +25,12 @@ public class VoiturePricing implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne
     private Carburant carburant;
-    @ManyToOne
     private Transmition transmition;
-    @ManyToOne
     private Categorie categorie;
     @Temporal(javax.persistence.TemporalType.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date datefin;
     private Double prix;
 
@@ -121,5 +114,5 @@ public class VoiturePricing implements Serializable {
     public String toString() {
         return "com.AgenceLocation.bean.VoiturePricing[ id=" + id + " ]";
     }
-
+    
 }
