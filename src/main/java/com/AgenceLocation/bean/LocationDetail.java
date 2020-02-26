@@ -32,7 +32,6 @@ public class LocationDetail implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateRetour;
     private Double prix;
-    //  A quel Liste Location apartien  
     @ManyToOne
     private Location location;
 
