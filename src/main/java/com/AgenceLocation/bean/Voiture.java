@@ -36,6 +36,8 @@ public class Voiture implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMiseEnCirculation;
     private double moyenNote;
+    @ManyToOne
+    private VoiturePricing voiturePricing;
 
     public Categorie getCategorie() {
         return categorie;
