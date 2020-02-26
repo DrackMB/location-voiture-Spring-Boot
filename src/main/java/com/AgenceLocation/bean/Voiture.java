@@ -7,12 +7,13 @@ package com.AgenceLocation.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -36,6 +37,14 @@ public class Voiture implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMiseEnCirculation;
     private double moyenNote;
+    @ManyToOne
+    private Agence agence;
+    // Tout a des lites de reveiw 
+    @OneToMany(mappedBy = "voiture")
+    private List<Review> review;
+    //tout voiture a des remise dans certaine date 
+    @ManyToOne
+    private VoiturePricing voiturePricing;
 
     public Categorie getCategorie() {
         return categorie;
@@ -117,5 +126,5 @@ public class Voiture implements Serializable {
     public String toString() {
         return "com.AgenceLocation.bean.Voiture[ id=" + id + " ]";
     }
-    
+
 }
