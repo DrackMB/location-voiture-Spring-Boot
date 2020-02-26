@@ -8,11 +8,13 @@ package com.AgenceLocation.bean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -26,7 +28,7 @@ public class VoiturePricing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @ManyToOne
     private Carburant carburant;
     @ManyToOne
@@ -39,6 +41,9 @@ public class VoiturePricing implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date datefin;
+    // Liste de voiture a des promotions 
+    @OneToMany(mappedBy = "voiturePricing")
+    private List<Voiture> voiture;
     private Double prix;
 
     public Carburant getCarburant() {

@@ -16,10 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
-/**
- *
- * @author dell
- */
+
+
 @Entity
 public class Location implements Serializable {
 
@@ -32,6 +30,7 @@ public class Location implements Serializable {
     private Double prixTotal;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateLocation;
+    
     @OneToMany(mappedBy = "location")
     private List<LocationDetail> locationDetails;
 

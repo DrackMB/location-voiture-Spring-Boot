@@ -28,11 +28,13 @@ public class Review implements Serializable {
     private Note note;
     @OneToOne
     private Client client;
+    //tout voitur a de revwei
     @ManyToOne
     private Voiture voiture;
     private String objet;
     private String corps;
-
+   
+    
     public String getObjet() {
         return objet;
     }
