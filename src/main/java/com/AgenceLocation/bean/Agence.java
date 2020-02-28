@@ -28,7 +28,9 @@ public class Agence implements Serializable {
     private String numTele;
     @ManyToOne
     private Ville ville;
-
+    private double code;
+//    private String quartier; //pour Controler L'ajout Des agences
+            
     public Ville getVille() {
         return ville;
     }

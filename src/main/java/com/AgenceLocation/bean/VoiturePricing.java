@@ -7,10 +7,12 @@ package com.AgenceLocation.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -24,38 +26,21 @@ public class VoiturePricing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private Carburant carburant;
-    private Transmition transmition;
-    private Categorie categorie;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datefin;
+    
+    @OneToMany(mappedBy = "voiturePricing")
+    private List<Voiture> voitures;
     private Double prix;
 
-    public Carburant getCarburant() {
-        return carburant;
+    public List<Voiture> getVoitures() {
+        return voitures;
     }
 
-    public void setCarburant(Carburant carburant) {
-        this.carburant = carburant;
-    }
-
-    public Transmition getTransmition() {
-        return transmition;
-    }
-
-    public void setTransmition(Transmition transmition) {
-        this.transmition = transmition;
-    }
-
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
+    public void setVoitures(List<Voiture> voitures) {
+        this.voitures = voitures;
     }
 
     public Date getDateDebut() {
@@ -114,5 +99,5 @@ public class VoiturePricing implements Serializable {
     public String toString() {
         return "com.AgenceLocation.bean.VoiturePricing[ id=" + id + " ]";
     }
-    
+
 }

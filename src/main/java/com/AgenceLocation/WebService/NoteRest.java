@@ -20,12 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @author aaoub
  */
 @RestController
-@RequestMapping("/AgenceLocation/note")
+@RequestMapping("AgenceLocation/note")
 public class NoteRest {
   @Autowired
   NoteService noteService;
-  @GetMapping("/libelle/{libelle}")
-   
+    @GetMapping("/libelle/{libelle}")
     public Note FindByLibelle(String libelle) {
         return noteService.FindByLibelle(libelle);
     }
@@ -34,8 +33,8 @@ public class NoteRest {
         noteService.save(note);
     }
    
-  @GetMapping("/fin/") 
-   public List<Note> findAll() {
+    @GetMapping("/fin/") 
+     public List<Note> findAll() {
         return noteService.findAll();
     }
   

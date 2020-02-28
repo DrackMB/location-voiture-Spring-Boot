@@ -5,16 +5,18 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.bean.Review;
-import java.util.List;
-
+import com.AgenceLocation.bean.Voiture;
 
 /**
  *
- * @author aaoub
+ * @author dell
  */
-public interface ReviewService {
-  public List<Review> findAll();
-  public int save(Review review);
-  
+public interface VoitureService {
+
+    void deleteByVoitureMatricule(String matricule);
+
+    int save(Voiture voiture);
+    
+    Voiture findByMatricule( String matricule);
+
 }
