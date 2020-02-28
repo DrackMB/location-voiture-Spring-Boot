@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("agenceLocation/agence")
+@RequestMapping("/AgenceLocation/pays")
 public class PaysRest {
     @Autowired
     private PaysService paysService;
@@ -33,8 +33,8 @@ public class PaysRest {
     }
 
     @DeleteMapping("/nom/{nom}")
-    public Pays deletByNom(@PathVariable String nom) {
-        return paysService.deletByNom(nom);
+    public Pays deleteByNom(@PathVariable String nom) {
+        return paysService.deleteByNom(nom);
     }
 
     @PostMapping("/")

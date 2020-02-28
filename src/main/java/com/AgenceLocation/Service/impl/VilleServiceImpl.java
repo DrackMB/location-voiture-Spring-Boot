@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class VilleServiceImpl implements VilleService{
+    
     @Autowired
     public VilleRepository villeRepository;
 
@@ -28,9 +29,9 @@ public class VilleServiceImpl implements VilleService{
     }
 
     @Override
-    public Ville deletByNom(String nom) {
+    public int deleteByNom(String nom) {
          //To change body of generated methods, choose Tools | Templates.
-         return villeRepository.deletByNom(nom);
+         return villeRepository.deleteByNom(nom);
     }
     
 

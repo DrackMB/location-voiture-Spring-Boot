@@ -27,9 +27,9 @@ public class PaysServiceImpl implements PaysService{
     }
 
     @Override
-    public Pays deletByNom(String nom) {
+    public Pays deleteByNom(String nom) {
         //To change body of generated methods, choose Tools | Templates.
-        return paysService.deletByNom(nom);
+        return paysService.deleteByNom(nom);
     }
 
     @Override

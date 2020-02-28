@@ -16,6 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PaysRepository extends JpaRepository<Pays, Long>{
     public Pays findByNom(String nom);
-    public Pays deletByNom(String nom);
+    public Pays deleteByNom(String nom);
     
 }

@@ -22,20 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("agenceLocation/agence")
+@RequestMapping("/AgenceLocation/ville")
 public class VilleRest {
     
     @Autowired
     private VilleService villeService;
-
+    
     @GetMapping("/nom/{nom}")
     public Ville findByNom(@PathVariable String nom) {
         return villeService.findByNom(nom);
     }
 
     @DeleteMapping("/nom/{nom}")
-    public Ville deletByNom(@PathVariable String nom) {
-        return villeService.deletByNom(nom);
+    public int deleteByNom(@PathVariable String nom) {
+        return villeService.deleteByNom(nom);
     }
 
     @PostMapping("/")

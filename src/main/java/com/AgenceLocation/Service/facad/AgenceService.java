@@ -13,10 +13,13 @@ import java.util.List;
  * @author OuMaima
  */
 public interface AgenceService {
+
     public Agence findByNom(String nom);
-    public Agence deletByNom(String nom);
+
+    public Agence deleteByNom(String nom);
+
     public void save(Agence agence);
+
     public List<Agence> findAll();
-    
-    
+
 }

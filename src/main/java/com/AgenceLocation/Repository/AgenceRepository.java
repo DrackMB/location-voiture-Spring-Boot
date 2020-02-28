@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AgenceRepository extends JpaRepository<Agence, Long>{
     public Agence findByNom(String nom);
-    public Agence deletByNom(String nom);
+    public Agence deleteByNom(String nom);
 }

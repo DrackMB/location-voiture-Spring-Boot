@@ -10,11 +10,13 @@ import com.AgenceLocation.Service.facad.AgenceService;
 import com.AgenceLocation.bean.Agence;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author OuMaima
  */
+@Service
 public class AgenceServiceImpl implements AgenceService{
     @Autowired
     private AgenceRepository agenceRepository;
@@ -26,9 +28,9 @@ public class AgenceServiceImpl implements AgenceService{
     }
     
     @Override
-    public Agence deletByNom(String nom) {
+    public Agence deleteByNom(String nom) {
         //To change body of generated methods, choose Tools | Templates.
-        return agenceRepository.deletByNom(nom);
+        return agenceRepository.deleteByNom(nom);
     }
 
     @Override

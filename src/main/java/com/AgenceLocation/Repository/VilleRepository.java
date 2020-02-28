@@ -14,7 +14,9 @@ import org.springframework.stereotype.Repository;
  * @author OuMaima
  */
 @Repository
-public interface VilleRepository extends JpaRepository<Ville, Long>{
-public Ville findByNom(String nom);
-public Ville deletByNom(String nom);
+public interface VilleRepository extends JpaRepository<Ville, Long> {
+
+    public Ville findByNom(String nom);
+
+    public int deleteByNom(String nom);
 }

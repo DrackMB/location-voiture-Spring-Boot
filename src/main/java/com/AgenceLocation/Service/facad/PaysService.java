@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface PaysService {
     public Pays findByNom(String nom);
-    public Pays deletByNom(String nom);
+    public Pays deleteByNom(String nom);
     public void save(Pays pays);
     public List<Pays> findAll();
     

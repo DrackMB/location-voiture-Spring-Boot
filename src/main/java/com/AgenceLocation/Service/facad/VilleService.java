@@ -13,9 +13,13 @@ import java.util.List;
  * @author OuMaima
  */
 public interface VilleService {
+
     public Ville findByNom(String nom);
-    public Ville deletByNom(String nom);
+
+    public int deleteByNom(String nom);
+
     public void save(Ville ville);
+
     public List<Ville> findAll();
-    
+
 }
