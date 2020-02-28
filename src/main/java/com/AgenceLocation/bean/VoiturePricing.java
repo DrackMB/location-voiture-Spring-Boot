@@ -22,8 +22,6 @@ import javax.persistence.Temporal;
 @Entity
 public class VoiturePricing implements Serializable {
 
-   
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,9 +30,18 @@ public class VoiturePricing implements Serializable {
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datefin;
+    
     @OneToMany(mappedBy = "voiturePricing")
     private List<Voiture> voitures;
     private Double prix;
+
+    public List<Voiture> getVoitures() {
+        return voitures;
+    }
+
+    public void setVoitures(List<Voiture> voitures) {
+        this.voitures = voitures;
+    }
 
     public Date getDateDebut() {
         return dateDebut;
@@ -92,5 +99,5 @@ public class VoiturePricing implements Serializable {
     public String toString() {
         return "com.AgenceLocation.bean.VoiturePricing[ id=" + id + " ]";
     }
-    
+
 }

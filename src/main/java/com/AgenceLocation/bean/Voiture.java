@@ -33,6 +33,7 @@ public class Voiture implements Serializable {
     private Carburant carburant;
     @ManyToOne
     private Transmition transmition;
+    
     private String matricule;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMiseEnCirculation;
@@ -45,6 +46,40 @@ public class Voiture implements Serializable {
     //tout voiture a des remise dans certaine date 
     @ManyToOne
     private VoiturePricing voiturePricing;
+    // Prix standare de voiture
+    private int PrixInitial;
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
+
+    public List<Review> getReview() {
+        return review;
+    }
+
+    public void setReview(List<Review> review) {
+        this.review = review;
+    }
+
+    public VoiturePricing getVoiturePricing() {
+        return voiturePricing;
+    }
+
+    public void setVoiturePricing(VoiturePricing voiturePricing) {
+        this.voiturePricing = voiturePricing;
+    }
+
+    public int getPrixInitial() {
+        return PrixInitial;
+    }
+
+    public void setPrixInitial(int PrixInitial) {
+        this.PrixInitial = PrixInitial;
+    }
 
     public Categorie getCategorie() {
         return categorie;
@@ -74,7 +109,7 @@ public class Voiture implements Serializable {
         return matricule;
     }
 
-    public void setMatricule(String matricule) {
+    public void setMatricule(String  matricule) {
         this.matricule = matricule;
     }
 
