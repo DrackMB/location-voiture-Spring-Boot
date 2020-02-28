@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
  *
  * @author aaoub
  */
-@Service
+
 public interface NoteService {
     public List<Note> findAll(); 
-    public void save(Note note);
+    public int save(Note note);
     public Note FindByLibelle(String libelle);
 }

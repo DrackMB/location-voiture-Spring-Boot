@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author aaoub
  */
 @RestController
-@RequestMapping("/AgenceLocation/review")
+@RequestMapping("AgenceLocation/review")
 public class ReviewRest {
   @Autowired
   ReviewService reviewService;

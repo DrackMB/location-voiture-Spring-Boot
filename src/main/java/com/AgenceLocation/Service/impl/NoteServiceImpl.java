@@ -31,11 +31,17 @@ public class NoteServiceImpl implements NoteService{
     }
 
     @Override
-    public void save(Note note) {
+    public int save(Note note) {
           Note foundedNote=noteRepository.findByLibelle(note.getLibelle());
-          if (foundedNote==null || note.getLibelle()!=null ) {
-            noteRepository.save(note);
-        }
+          if (foundedNote!=null) {
+              return -1;}
+              else if(note.getLibelle()==null){
+               return -2;
+                      }
+              else {
+                  noteRepository.save(note);
+                  return 1;
+              }
     }
 
     @Override

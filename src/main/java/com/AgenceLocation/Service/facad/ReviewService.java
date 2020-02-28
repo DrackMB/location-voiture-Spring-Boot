@@ -7,14 +7,14 @@ package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.bean.Review;
 import java.util.List;
-import org.springframework.stereotype.Service;
+
 
 /**
  *
  * @author aaoub
  */
-@Service
 public interface ReviewService {
   public List<Review> findAll();
-      
+  public int save(Review review);
+  
 }
