@@ -5,15 +5,16 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.bean.Review;
-import java.util.List;
+import com.AgenceLocation.Repository.*;
+import com.AgenceLocation.bean.Transmition;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author aaoub
+ * @author dell
  */
-public interface ReviewService {
-  public List<Review> findAll();
-  public int save(Review review);
-  
+public interface TransmitionService {
+
+    int save(Transmition transmition);
+
 }

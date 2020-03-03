@@ -43,9 +43,7 @@ public class Voiture implements Serializable {
     // Tout a des lites de reveiw 
     @OneToMany(mappedBy = "voiture")
     private List<Review> review;
-    //tout voiture a des remise dans certaine date 
-    @ManyToOne
-    private VoiturePricing voiturePricing;
+
     // Prix standare de voiture
     private int PrixInitial;
 
@@ -64,15 +62,6 @@ public class Voiture implements Serializable {
     public void setReview(List<Review> review) {
         this.review = review;
     }
-
-    public VoiturePricing getVoiturePricing() {
-        return voiturePricing;
-    }
-
-    public void setVoiturePricing(VoiturePricing voiturePricing) {
-        this.voiturePricing = voiturePricing;
-    }
-
     public int getPrixInitial() {
         return PrixInitial;
     }

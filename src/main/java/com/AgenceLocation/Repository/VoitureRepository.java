@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface VoitureRepository extends JpaRepository<Voiture, Long> {
 
 //    @Query("delete from Voiture where matricule like :matricule ")
-    void deleteByVoitureMatricule( String matricule);
+    void deleteByMatricule( String matricule);
 
 //    @Query("SELECT v from Voiture where v.matricule=:matricule")
     Voiture findByMatricule( String matricule);

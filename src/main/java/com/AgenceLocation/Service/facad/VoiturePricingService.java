@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.Service.facad;
 
+import com.AgenceLocation.bean.Categorie;
 import com.AgenceLocation.bean.Voiture;
 import com.AgenceLocation.bean.VoiturePricing;
 import java.util.Date;
@@ -18,11 +19,12 @@ public interface VoiturePricingService {
 
     public List<VoiturePricing> findAll();
 
-   // VoiturePricing findByVoitureMatriculeLike(String matricule);
+    // VoiturePricing findByVoitureMatriculeLike(String matricule);
+    int save(Voiture voiture, int Porcentage, Date dateFinal,Date dateDebu);
 
-    int save(Voiture voiture, VoiturePricing voiturePricing, int Porcentage, Date dateFinal);
+    int deleteByCategorie(Categorie categorie);
 
-    void deleteByVoitureMatricule(String matricule);
+    List<VoiturePricing> findByCategorie(Categorie categorie);
 
     void checkeExistancePromo();
 
