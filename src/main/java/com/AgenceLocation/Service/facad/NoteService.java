@@ -5,16 +5,18 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.Repository.*;
-import com.AgenceLocation.bean.Transmition;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.AgenceLocation.bean.Note;
+import java.util.List;
 
 /**
  *
- * @author dell
+ * @author aaoub
  */
-public interface TransmitionService {
+public interface NoteService {
 
-    int save(Transmition transmition);
+    public List<Note> findAll();
 
+    public int save(Note note);
+
+    public Note FindByLibelle(String libelle);
 }

@@ -30,26 +30,9 @@ public class Agence implements Serializable {
     private String numTele;
     @ManyToOne
     private Ville ville;
-    private String code;
-   
-    @OneToMany(mappedBy ="agence")
-    private List<Voiture> voiture;
-    public List<Voiture> getVoiture() {
-		return voiture;
-	}
-	public void setVoiture(List<Voiture> voitures) {
-		this.voiture = voiture;
-	}
-    
-    
-    public String getCode(){
-        return code;
-    }
-    
-    public void setCode(String code){
-        this.code=code;
-    }
-    
+    @OneToMany(mappedBy = "agence")
+    private List<VoiturePricing> voiturePricing;
+
     public Ville getVille() {
         return ville;
     }

@@ -5,11 +5,11 @@
  */
 package com.AgenceLocation.WebService;
 
-import com.AgenceLocation.Service.facad.TransmitionService;
+import com.AgenceLocation.Service.facad.*;
+import com.AgenceLocation.Repository.*;
 import com.AgenceLocation.bean.Transmition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @author dell
  */
 @RestController
-@RequestMapping("/AgenceLocation/Transmition/")
-public class TansmitionRest {
+@RequestMapping("/transm")
+public class TransmitionRest {
 
     @Autowired
-    private TransmitionService transmitionService;
+    TransmitionService transmitionService;
 
     @PostMapping("/")
-    public void save(@RequestBody Transmition transmition) {
-        transmitionService.save(transmition);
+    public int save(Transmition transmition) {
+        return transmitionService.save(transmition);
     }
 
 }

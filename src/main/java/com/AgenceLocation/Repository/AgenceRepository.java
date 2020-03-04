@@ -5,15 +5,16 @@
  */
 package com.AgenceLocation.Repository;
 
-import com.AgenceLocation.bean.Carburant;
+import com.AgenceLocation.bean.Agence;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author dell
+ * @author OuMaima
  */
 @Repository
-public interface CarburantRepository extends JpaRepository<Carburant, Long>{
-    
+public interface AgenceRepository extends JpaRepository<Agence, Long>{
+    public Agence findByNom(String nom);
+    public Agence deleteByNom(String nom);
 }

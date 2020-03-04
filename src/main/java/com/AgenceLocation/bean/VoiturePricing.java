@@ -5,7 +5,6 @@
  */
 package com.AgenceLocation.bean;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -26,44 +25,36 @@ public class VoiturePricing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @ManyToOne
-    private Carburant carburant;
-    @ManyToOne
-    private Transmition transmition;
-    @ManyToOne
-    private Categorie categorie;
     @Temporal(javax.persistence.TemporalType.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date datefin;
-    private Double prix;
+    // en relier avec le categori et avec la gence tout a gence a des categori et le categrie et le grande que la marque 
+    // on peut lier avec categori et la gence et la voitur et de plus d un voiturePrincing 
 
-    public Carburant getCarburant() {
-        return carburant;
-    }
+    @ManyToOne
+    private Categorie categorie;
 
-    public void setCarburant(Carburant carburant) {
-        this.carburant = carburant;
-    }
-
-    public Transmition getTransmition() {
-        return transmition;
-    }
-
-    public void setTransmition(Transmition transmition) {
-        this.transmition = transmition;
-    }
-
-    public Categorie getCategorie() {
+    public Categorie getcategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
+    public void setcategorie(Categorie categorie) {
         this.categorie = categorie;
     }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
+
+    @ManyToOne
+    private Agence agence;
+
+    private Double prix;
 
     public Date getDateDebut() {
         return dateDebut;

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.AgenceLocation.Repository;
 
 //import com.AgenceLocation.bean.Agence;
@@ -12,12 +11,21 @@ import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 //import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author HP
+ * @author dell
  */
-public interface VoitureRepository extends JpaRepository<Voiture,Long>{
-    Voiture findByMatricule(String matricule);
+@Repository
+public interface VoitureRepository extends JpaRepository<Voiture, Long> {
+
+//    @Query("delete from Voiture where matricule like :matricule ")
+    void deleteByMatricule( String matricule);
+
+//    @Query("SELECT v from Voiture where v.matricule=:matricule")
+    Voiture findByMatricule( String matricule);
 
 }

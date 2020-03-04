@@ -7,12 +7,13 @@ package com.AgenceLocation.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -32,30 +33,41 @@ public class Voiture implements Serializable {
     private Carburant carburant;
     @ManyToOne
     private Transmition transmition;
+    
     private String matricule;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMiseEnCirculation;
     private double moyenNote;
-    private int prixInitial;
-    
-    
     @ManyToOne
     private Agence agence;
-    
-    public int getPrixInitial() {
-        return prixInitial;
-    }
+    // Tout a des lites de reveiw 
+    @OneToMany(mappedBy = "voiture")
+    private List<Review> review;
 
-    public void setPrixInitial(int prixInitial) {
-        this.prixInitial = prixInitial;
-    }
-    
+    // Prix standare de voiture
+    private int PrixInitial;
+
     public Agence getAgence() {
         return agence;
     }
 
     public void setAgence(Agence agence) {
         this.agence = agence;
+    }
+
+    public List<Review> getReview() {
+        return review;
+    }
+
+    public void setReview(List<Review> review) {
+        this.review = review;
+    }
+    public int getPrixInitial() {
+        return PrixInitial;
+    }
+
+    public void setPrixInitial(int PrixInitial) {
+        this.PrixInitial = PrixInitial;
     }
 
     public Categorie getCategorie() {
@@ -86,7 +98,7 @@ public class Voiture implements Serializable {
         return matricule;
     }
 
-    public void setMatricule(String matricule) {
+    public void setMatricule(String  matricule) {
         this.matricule = matricule;
     }
 
@@ -138,5 +150,5 @@ public class Voiture implements Serializable {
     public String toString() {
         return "com.AgenceLocation.bean.Voiture[ id=" + id + " ]";
     }
-    
+
 }

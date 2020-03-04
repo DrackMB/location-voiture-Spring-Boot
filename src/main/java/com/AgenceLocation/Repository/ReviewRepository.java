@@ -4,24 +4,18 @@
  * and open the template in the editor.
  */
 package com.AgenceLocation.Repository;
-
-import com.AgenceLocation.bean.Categorie;
-import com.AgenceLocation.bean.VoiturePricing;
+import com.AgenceLocation.bean.Review;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author dell
+ * @author aaoub
  */
 @Repository
-public interface VoiturePricingRepository extends JpaRepository<VoiturePricing, Long> {
-
+public interface ReviewRepository extends JpaRepository<Review,Long> {
+   
+ 
     
-    int deleteByCategorie(Categorie categorie);
-   List <VoiturePricing> findByCategorie(Categorie categorie);
-    
-    
-    //VoiturePricing findByVoitureMatriculeLike(String matricule);
 }

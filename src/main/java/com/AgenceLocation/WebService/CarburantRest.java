@@ -5,28 +5,32 @@
  */
 package com.AgenceLocation.WebService;
 
+
+import com.AgenceLocation.Service.impl.*;
+import com.AgenceLocation.Repository.CarburantRepository;
 import com.AgenceLocation.Service.facad.CarburantService;
 import com.AgenceLocation.bean.Carburant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 /**
  *
  * @author dell
  */
 @RestController
-@RequestMapping("/AgenceLocation/Carburant/")
+@RequestMapping("/carburant")
 public class CarburantRest {
-
     @Autowired
-    private CarburantService carburantService;
-
+    CarburantService carburantService;
     @PostMapping("/")
-    public void save(@RequestBody Carburant carburant) {
-        carburantService.save(carburant);
+    public int save(Carburant carburant) {
+        return carburantService.save(carburant);
     }
-
+    
+    
+    
 }
