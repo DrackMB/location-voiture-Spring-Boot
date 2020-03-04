@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface NoteRepository extends JpaRepository<Note,Long> {
- public List<Note> findAll();  
+ 
  public Note findByLibelle(String libelle ); 
 }
