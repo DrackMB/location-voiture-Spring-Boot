@@ -7,15 +7,16 @@ package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.bean.Note;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author aaoub
  */
-
 public interface NoteService {
-    public List<Note> findAll(); 
+
+    public List<Note> findAll();
+
     public int save(Note note);
+
     public Note FindByLibelle(String libelle);
 }

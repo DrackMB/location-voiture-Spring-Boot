@@ -30,9 +30,15 @@ public class NoteServiceImpl implements NoteService{
        return noteRepository.findAll();
     }
 
+   
+    @Override
+    public Note FindByLibelle(String libelle) {
+       return noteRepository.findByLibelle(libelle);
+    }
+
     @Override
     public int save(Note note) {
-          Note foundedNote=noteRepository.findByLibelle(note.getLibelle());
+        Note foundedNote=noteRepository.findByLibelle(note.getLibelle());
           if (foundedNote!=null) {
               return -1;}
               else if(note.getLibelle()==null){
@@ -41,13 +47,7 @@ public class NoteServiceImpl implements NoteService{
               else {
                   noteRepository.save(note);
                   return 1;
-              }
-    }
-
-    @Override
-    public Note FindByLibelle(String libelle) {
-       return noteRepository.findByLibelle(libelle);
-    }
+              }   }
     
     
 }
