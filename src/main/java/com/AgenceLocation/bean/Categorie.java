@@ -6,11 +6,12 @@
 package com.AgenceLocation.bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,10 +25,19 @@ public class Categorie implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelle ;
-    @ManyToOne
-    private Marque marque;
+    @OneToMany(mappedBy = "categorie")
+    private List<Marque> marque;
+
     private int siege;
     private int porte;
+    
+     public List<Marque> getMarque() {
+        return marque;
+    }
+     
+	public void setMarque(List<Marque> marques) {
+		this.marque = marque;
+        }
 
     public String getLibelle() {
         return libelle;
@@ -37,14 +47,7 @@ public class Categorie implements Serializable {
         this.libelle = libelle;
     }
 
-    public Marque getMarque() {
-        return marque;
-    }
-
-    public void setMarque(Marque marque) {
-        this.marque = marque;
-    }
-
+   
     public int getSiege() {
         return siege;
     }

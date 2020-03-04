@@ -6,6 +6,8 @@
 package com.AgenceLocation.Service.facad;
 
 
+//import com.AgenceLocation.bean.Agence;
+import com.AgenceLocation.bean.Agence;
 import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 
@@ -17,5 +19,6 @@ public interface VoitureService {
      int save(Voiture voiture);
     List<Voiture>findAll();
     Voiture findByMatricule(String matricule);
+  List<Voiture> findByCode(String code);
     
 }

@@ -36,6 +36,27 @@ public class Voiture implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMiseEnCirculation;
     private double moyenNote;
+    private int prixInitial;
+    
+    
+    @ManyToOne
+    private Agence agence;
+    
+    public int getPrixInitial() {
+        return prixInitial;
+    }
+
+    public void setPrixInitial(int prixInitial) {
+        this.prixInitial = prixInitial;
+    }
+    
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
 
     public Categorie getCategorie() {
         return categorie;

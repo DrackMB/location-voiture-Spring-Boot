@@ -6,6 +6,7 @@
 package com.AgenceLocation.WebService;
 
 import com.AgenceLocation.Service.facad.VoitureService;
+import com.AgenceLocation.bean.Agence;
 import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,12 @@ public class VoitureRest {
     @GetMapping("/matricule/{matricule}")
     public Voiture findByMatricule(@PathVariable String matricule) {
         return voitureService.findByMatricule(matricule);
+    }
+    
+    @GetMapping("/code/{code}")
+    public List<Voiture> findByCode (@PathVariable String code){
+        return voitureService.findByCode(code);
+        
     }
     
 }

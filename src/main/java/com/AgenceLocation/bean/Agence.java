@@ -6,11 +6,13 @@
 package com.AgenceLocation.bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,7 +30,26 @@ public class Agence implements Serializable {
     private String numTele;
     @ManyToOne
     private Ville ville;
-
+    private String code;
+   
+    @OneToMany(mappedBy ="agence")
+    private List<Voiture> voiture;
+    public List<Voiture> getVoiture() {
+		return voiture;
+	}
+	public void setVoiture(List<Voiture> voitures) {
+		this.voiture = voiture;
+	}
+    
+    
+    public String getCode(){
+        return code;
+    }
+    
+    public void setCode(String code){
+        this.code=code;
+    }
+    
     public Ville getVille() {
         return ville;
     }
