@@ -13,7 +13,7 @@ import com.AgenceLocation.bean.Voiture;
  */
 public interface VoitureService {
 
-    void deleteByVoitureMatricule(String matricule);
+    void deleteByMatricule(String matricule);
 
     int save(Voiture voiture);
     

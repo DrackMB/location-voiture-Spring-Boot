@@ -19,8 +19,8 @@ public class VoitureServiceImpl implements VoitureService {
     private VoitureRepository voitureRepository;
 
     @Override
-    public void deleteByVoitureMatricule(String matricule) {
-        voitureRepository.deleteByVoitureMatricule(matricule);
+    public void deleteByMatricule(String matricule) {
+        voitureRepository.deleteByMatricule(matricule);
     }
 
     @Override

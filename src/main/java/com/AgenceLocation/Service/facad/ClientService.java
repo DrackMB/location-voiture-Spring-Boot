@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
  *
  * @author aaoub
  */
+
 public interface ClientService {
     public Client findByCin(String cin);
     public List<Client> findAll();

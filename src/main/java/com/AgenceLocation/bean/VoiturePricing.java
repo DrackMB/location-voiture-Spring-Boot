@@ -7,12 +7,11 @@ package com.AgenceLocation.bean;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -30,18 +29,32 @@ public class VoiturePricing implements Serializable {
     private Date dateDebut;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datefin;
-    
-    @OneToMany(mappedBy = "voiturePricing")
-    private List<Voiture> voitures;
+    // en relier avec le categori et avec la gence tout a gence a des categori et le categrie et le grande que la marque 
+    // on peut lier avec categori et la gence et la voitur et de plus d un voiturePrincing 
+
+    @ManyToOne
+    private Categorie categorie;
+
+    public Categorie getcategorie() {
+        return categorie;
+    }
+
+    public void setcategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
+
+    @ManyToOne
+    private Agence agence;
+
     private Double prix;
-
-    public List<Voiture> getVoitures() {
-        return voitures;
-    }
-
-    public void setVoitures(List<Voiture> voitures) {
-        this.voitures = voitures;
-    }
 
     public Date getDateDebut() {
         return dateDebut;
