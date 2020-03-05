@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 package com.AgenceLocation.Repository;
-
-import com.AgenceLocation.bean.Marque;
+import com.AgenceLocation.bean.Client;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.stereotype.Repository;
 /**
  *
- * @author HP
+ * @author aaoub
  */
-public interface MarqueRepository extends JpaRepository<Marque, Long> {
-
-    Marque findByLibelle(String libelle);
-
+@Repository
+public interface ClientRepository extends JpaRepository<Client,Long> {
+  public Client findByCin(String cin);
+  
+  
+    
 }

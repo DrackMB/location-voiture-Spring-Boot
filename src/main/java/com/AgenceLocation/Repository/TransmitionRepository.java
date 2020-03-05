@@ -7,13 +7,11 @@ package com.AgenceLocation.Repository;
 
 import com.AgenceLocation.bean.Transmition;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author dell
  */
-@Repository
-public interface TransmitionRepository extends JpaRepository<Transmition,Long>{
+public interface TransmitionRepository extends  JpaRepository<Transmition, Long>{
     
 }

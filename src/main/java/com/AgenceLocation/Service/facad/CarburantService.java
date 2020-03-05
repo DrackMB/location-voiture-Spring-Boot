@@ -5,14 +5,17 @@
  */
 package com.AgenceLocation.Service.facad;
 
+import com.AgenceLocation.Repository.*;
 import com.AgenceLocation.bean.Carburant;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author dell
  */
+
 public interface CarburantService {
-    public void save(Carburant carburant);
+    int save(Carburant carburant);
     
 }

@@ -5,25 +5,26 @@
  */
 package com.AgenceLocation.Service.impl;
 
+
 import com.AgenceLocation.Repository.CarburantRepository;
 import com.AgenceLocation.Service.facad.CarburantService;
 import com.AgenceLocation.bean.Carburant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 /**
  *
  * @author dell
  */
 @Service
-public class CarburantServiceImpl implements CarburantService {
+public class CarburantServiceImpl implements CarburantService{
     @Autowired
-    private CarburantRepository carburantRepository ;
-
-    @Override
-    public void save(Carburant carburant) {
-        carburantRepository.save(carburant);
+    CarburantRepository carburantRepository;
+    
+    public int save(Carburant carburant){
+         carburantRepository.save(carburant);
+        return 1;
     }
-
-   
+    
 }

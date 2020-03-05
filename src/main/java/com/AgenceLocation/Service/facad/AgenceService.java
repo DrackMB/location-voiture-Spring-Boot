@@ -5,20 +5,21 @@
  */
 package com.AgenceLocation.Service.facad;
 
-
-//import com.AgenceLocation.bean.Agence;
 import com.AgenceLocation.bean.Agence;
-import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 
 /**
  *
- * @author HP
+ * @author OuMaima
  */
-public interface VoitureService {
-     int save(Voiture voiture);
-    List<Voiture>findAll();
-    Voiture findByMatricule(String matricule);
-  List<Voiture> findByCode(String code);
-    
+public interface AgenceService {
+
+    public Agence findByNom(String nom);
+
+    public Agence deleteByNom(String nom);
+
+    public void save(Agence agence);
+
+    public List<Agence> findAll();
+
 }
