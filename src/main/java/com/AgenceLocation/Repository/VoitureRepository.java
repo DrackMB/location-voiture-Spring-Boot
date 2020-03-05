@@ -9,8 +9,6 @@ package com.AgenceLocation.Repository;
 import com.AgenceLocation.bean.Voiture;
 //import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,12 +16,7 @@ import org.springframework.stereotype.Repository;
  * @author dell
  */
 @Repository
-public interface VoitureRepository extends JpaRepository<Voiture, Long> {
-
-//    @Query("delete from Voiture where matricule like :matricule ")
-    void deleteByMatricule( String matricule);
-
-//    @Query("SELECT v from Voiture where v.matricule=:matricule")
-    Voiture findByMatricule( String matricule);
-
+public interface VoitureRepository extends JpaRepository<Voiture,Long>{
+    Voiture findByMatricule(String matricule);
+     //heho3Acha sidana a dqsdqsdq
 }
