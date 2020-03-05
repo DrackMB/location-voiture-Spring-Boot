@@ -6,9 +6,7 @@
 package com.AgenceLocation.Repository;
 
 //import com.AgenceLocation.bean.Agence;
-import com.AgenceLocation.bean.Agence;
 import com.AgenceLocation.bean.Voiture;
-import java.util.List;
 //import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
