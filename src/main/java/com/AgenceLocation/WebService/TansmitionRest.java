@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author dell
- */
+
 @RestController
 @RequestMapping("/AgenceLocation/Transmition/")
 public class TansmitionRest {
