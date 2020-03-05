@@ -18,10 +18,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VoiturePricingRepository extends JpaRepository<VoiturePricing, Long> {
 
+    int deleteByCategorieLibelle(String  libelle);
+
+    VoiturePricing findByCategorieLibelle(String  libelle);
     
-    int deleteByCategorie(Categorie categorie);
-   List <VoiturePricing> findByCategorie(Categorie categorie);
+    List<VoiturePricing> findByAgenceNom(String nom);
     
     
+
     //VoiturePricing findByVoitureMatriculeLike(String matricule);
 }

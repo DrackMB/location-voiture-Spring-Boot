@@ -5,12 +5,15 @@
  */
 package com.AgenceLocation.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,15 +27,16 @@ public class Marque implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelle ;
-    @ManyToOne
-    private Categorie categorie;
+    @OneToMany(mappedBy = "marque")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List <Categorie> categorie;
     
     
-     public Categorie getCategorie() {
+     public List<Categorie> getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
+    public void setCategorie(List<Categorie> categorie) {
         this.categorie = categorie;
     }
 

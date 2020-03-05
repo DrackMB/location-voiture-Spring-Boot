@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -26,7 +27,8 @@ public class Pays implements Serializable {
     private Long id;
     private String nom;
     private double code;
-    @OneToMany
+    @OneToMany(mappedBy = "pays")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Ville> villes ;
 
     public String getNom() {

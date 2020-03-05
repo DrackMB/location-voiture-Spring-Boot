@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -42,6 +43,7 @@ public class Voiture implements Serializable {
     private Agence agence;
     // Tout a des lites de reveiw 
     @OneToMany(mappedBy = "voiture")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Review> review;
 
     // Prix standare de voiture

@@ -27,12 +27,12 @@ public class VoitureServiceImpl implements VoitureService {
     }
 
     @Override
-    public Voiture findByMatricule(String matricule) {
-        return voitureRepository.findByMatricule(matricule);
+    public List<Voiture> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Voiture> findAll() {
+    public Voiture findByMatricule(String matricule) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -40,5 +40,14 @@ public class VoitureServiceImpl implements VoitureService {
     public List<Voiture> findByCode(String code) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Voiture findByCategorieLibelleAndAgenceNom(String libelle,String nom) {
+        return voitureRepository.findByCategorieLibelleAndAgenceNom(libelle, nom);
+    }
+
+   
+
+    
 
 }
