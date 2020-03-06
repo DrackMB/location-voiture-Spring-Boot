@@ -27,6 +27,7 @@ public class Marque implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelle ;
+    
     @OneToMany(mappedBy = "marque")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List <Categorie> categorie;

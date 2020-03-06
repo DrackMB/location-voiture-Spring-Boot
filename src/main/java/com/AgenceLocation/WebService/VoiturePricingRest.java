@@ -9,6 +9,7 @@ import com.AgenceLocation.Service.facad.VoiturePricingService;
 import com.AgenceLocation.bean.VoiturePricing;
 import java.util.Date;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,6 +39,7 @@ public class VoiturePricingRest {
     public int save(@RequestBody Voiture voiture,@PathVariable int Porcentage,@PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateFinal,@PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateDebu) {
         return voiturePricingService.save(voiture, Porcentage, dateFinal, dateDebu);
     }
+    @Transactional
     @DeleteMapping("/CategorieLibelle/{libelle}")
     public int deleteByCategorieLibelle(@PathVariable String libelle) {
         return voiturePricingService.deleteByCategorieLibelle(libelle);
@@ -55,7 +57,7 @@ public class VoiturePricingRest {
         return voiturePricingService.findByAgenceNom(nom);
     }
     
-
+    // voire avec prof
     public void checkeExistancePromo() {
         voiturePricingService.checkeExistancePromo();
     }

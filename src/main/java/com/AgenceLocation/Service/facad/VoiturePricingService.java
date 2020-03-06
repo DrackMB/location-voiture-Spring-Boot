@@ -18,11 +18,10 @@ public interface VoiturePricingService {
 
     public List<VoiturePricing> findAll();
 
-    // VoiturePricing findByVoitureMatriculeLike(String matricule);
     int save(Voiture voiture, int porcentage, Date dateFinal,Date dateDebu);
 
     int deleteByCategorieLibelle(String libelle);
-
+   // veifier avec le prof
     VoiturePricing findByCategorieLibelle(String  libelle);
 
     void checkeExistancePromo();

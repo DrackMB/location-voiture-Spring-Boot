@@ -5,7 +5,6 @@
  */
 package com.AgenceLocation.Repository;
 
-import com.AgenceLocation.bean.Categorie;
 import com.AgenceLocation.bean.VoiturePricing;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -5,7 +5,12 @@
  */
 package com.AgenceLocation.Service.impl;
 
+import com.AgenceLocation.Repository.AgenceRepository;
+import com.AgenceLocation.Repository.CategorieRepository;
 import com.AgenceLocation.Repository.VoiturePricingRepository;
+import com.AgenceLocation.Repository.VoitureRepository;
+import com.AgenceLocation.Service.facad.AgenceService;
+import com.AgenceLocation.Service.facad.CategorieService;
 import com.AgenceLocation.Service.facad.VoiturePricingService;
 import com.AgenceLocation.Service.facad.VoitureService;
 import com.AgenceLocation.bean.Voiture;
@@ -26,6 +31,12 @@ public class VoiturePricingServiceImpl implements VoiturePricingService {
     private VoiturePricingRepository voiturePricingRepository;
     @Autowired
     private VoitureService voitureService ;
+    @Autowired
+    private CategorieService categorieService;
+    @Autowired
+    private AgenceService agenceService;
+    
+    
     
 
     @Override
@@ -46,7 +57,10 @@ public class VoiturePricingServiceImpl implements VoiturePricingService {
            voiturePricing.setDatefin(dateFinal);
            voiturePricing.setcategorie(voiture.getCategorie());
            voiturePricing.setAgence(voiture.getAgence());
+           voitureService.save(voiture);
+           
            voiturePricingRepository.save(voiturePricing);
+           
            return 1;
          }       else {
                  if(voiturePricings.getDatefin().getTime()<dateFinal.getTime()
