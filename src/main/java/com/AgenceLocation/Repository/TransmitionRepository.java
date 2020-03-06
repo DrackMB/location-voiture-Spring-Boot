@@ -14,4 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface TransmitionRepository extends  JpaRepository<Transmition, Long>{
     
+    Transmition findByLibelle(String libelle);
+    
 }

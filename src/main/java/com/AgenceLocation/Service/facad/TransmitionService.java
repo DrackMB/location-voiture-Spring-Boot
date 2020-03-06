@@ -16,5 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface TransmitionService {
 
     int save(Transmition transmition);
+    Transmition findByLibelle(String libelle);
 
 }

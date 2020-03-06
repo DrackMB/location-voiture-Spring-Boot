@@ -6,13 +6,13 @@
 package com.AgenceLocation.WebService;
 
 
-import com.AgenceLocation.Service.impl.*;
-import com.AgenceLocation.Repository.CarburantRepository;
 import com.AgenceLocation.Service.facad.CarburantService;
 import com.AgenceLocation.bean.Carburant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,10 +27,14 @@ public class CarburantRest {
     @Autowired
     CarburantService carburantService;
     @PostMapping("/")
-    public int save(Carburant carburant) {
+    public int save(@RequestBody Carburant carburant) {
         return carburantService.save(carburant);
     }
     
+     @GetMapping("/libelle/{libelle}")
+    public Carburant findByLibelle(@PathVariable String libelle) {
+        return carburantService.findByLibelle(libelle);
+    }
     
     
 }

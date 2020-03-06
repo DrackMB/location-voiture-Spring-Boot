@@ -17,5 +17,6 @@ import org.springframework.stereotype.Repository;
 
 public interface CarburantService {
     int save(Carburant carburant);
+    Carburant findByLibelle(String libelle);
     
 }

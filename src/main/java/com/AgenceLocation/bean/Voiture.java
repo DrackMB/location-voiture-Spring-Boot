@@ -43,7 +43,6 @@ public class Voiture implements Serializable {
     private Agence agence;
     // Tout a des lites de reveiw 
     @OneToMany(mappedBy = "voiture")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Review> review;
 
     // Prix standare de voiture
