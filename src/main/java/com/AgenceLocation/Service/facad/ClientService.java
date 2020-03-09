@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public interface ClientService {
     public Client findByCin(String cin);
     public List<Client> findAll();
-    public void save(Client client);
+    public int save(Client client);
     
     
 }

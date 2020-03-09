@@ -31,10 +31,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void save(Client client){
+    public int save(Client client){
         Client founded=clientRepository.findByCin(client.getCin());
-        if (founded==null || client.getCin()!=null ) {
-            clientRepository.save(client);
+        if (founded!=null) {
+            return -1;
+        }else if(client.getCin()==null){return -2; }
+        else{   clientRepository.save(client);
+        return 1;
         }
     }
     
