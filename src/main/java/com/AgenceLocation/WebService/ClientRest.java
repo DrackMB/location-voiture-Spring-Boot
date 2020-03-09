@@ -25,12 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientRest {
     @Autowired
     ClientService clientService;
-    
+
     @PostMapping("/")
-    public void save(@RequestBody Client client) {
-        clientService.save(client);
-    }
-    
+    public int save (@RequestBody Client client) {
+        return clientService.save(client);
+    } 
     
     @GetMapping("/cin/{cin}")
     public Client findByCin(@PathVariable String cin) {

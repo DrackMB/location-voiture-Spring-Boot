@@ -10,6 +10,7 @@ import com.AgenceLocation.bean.Note;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +25,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class NoteRest {
   @Autowired
   NoteService noteService;
+    
+    @PostMapping("/")
+    public int save(@RequestBody Note note) {
+        return noteService.save(note);
+    }
     @GetMapping("/libelle/{libelle}")
-    public Note FindByLibelle(String libelle) {
+    public Note FindByLibelle(@PathVariable String libelle) {
         return noteService.FindByLibelle(libelle);
     }
-    @PostMapping("/")
-    public void save(@RequestBody Note note) {
-        noteService.save(note);
-    }
+    
    
     @GetMapping("/fin/") 
      public List<Note> findAll() {
