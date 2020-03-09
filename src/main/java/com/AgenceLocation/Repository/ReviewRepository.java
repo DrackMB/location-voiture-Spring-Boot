@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ReviewRepository extends JpaRepository<Review,Long> {
-   
+   public List<Review> findAll();  
  
     
 }
