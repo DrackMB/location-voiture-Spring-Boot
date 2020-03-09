@@ -15,5 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CarburantRepository extends JpaRepository<Carburant, Long>{
+    Carburant findByLibelle(String libelle);
     
 }

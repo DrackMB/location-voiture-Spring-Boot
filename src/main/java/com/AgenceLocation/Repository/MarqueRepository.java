@@ -5,15 +5,19 @@
  */
 package com.AgenceLocation.Repository;
 
-import com.AgenceLocation.bean.Transmition;
+import com.AgenceLocation.bean.Marque;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author dell
+ * @author HP
  */
-public interface TransmitionRepository extends  JpaRepository<Transmition, Long>{
-    
-    Transmition findByLibelle(String libelle);
-    
+
+@Repository
+public interface MarqueRepository extends JpaRepository<Marque, Long> {
+
+    Marque findByLibelle(String libelle);
+
 }
+

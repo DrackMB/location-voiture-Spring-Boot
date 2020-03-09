@@ -5,9 +5,9 @@
  */
 package com.AgenceLocation.WebService;
 
-
-import com.AgenceLocation.Service.facad.CarburantService;
-import com.AgenceLocation.bean.Carburant;
+import com.AgenceLocation.Service.facad.CategorieService;
+import com.AgenceLocation.bean.Categorie;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,25 +16,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 /**
  *
- * @author dell
+ * @author HP
  */
+
 @RestController
-@RequestMapping("/carburant")
-public class CarburantRest {
+@RequestMapping("agencelocation/categorie")
+public class CategorieRest {
     @Autowired
-    CarburantService carburantService;
+    private CategorieService categorieService;
+    
     @PostMapping("/")
-    public int save(@RequestBody Carburant carburant) {
-        return carburantService.save(carburant);
+    public int save(@RequestBody Categorie categorie) {
+       return categorieService.save(categorie);
+      
+    }
+
+    @GetMapping("/find")
+    public List<Categorie> findAll() {
+        return categorieService.findAll();
+    }
+
+    @GetMapping("/libelle/{libelle}")
+    public Categorie findByLibelle(@PathVariable String libelle) {
+        return categorieService.findByLibelle(libelle);
     }
     
-     @GetMapping("/libelle/{libelle}")
-    public Carburant findByLibelle(@PathVariable String libelle) {
-        return carburantService.findByLibelle(libelle);
-    }
+    
     
     
 }

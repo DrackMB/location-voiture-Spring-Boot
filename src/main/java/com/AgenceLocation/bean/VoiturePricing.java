@@ -31,9 +31,11 @@ public class VoiturePricing implements Serializable {
     private Date datefin;
     // en relier avec le categori et avec la gence tout a gence a des categori et le categrie et le grande que la marque 
     // on peut lier avec categori et la gence et la voitur et de plus d un voiturePrincing 
-
+    @ManyToOne
+    private Agence agence;
     @ManyToOne
     private Categorie categorie;
+    private Double prix;
 
     public Categorie getcategorie() {
         return categorie;
@@ -50,11 +52,6 @@ public class VoiturePricing implements Serializable {
     public void setAgence(Agence agence) {
         this.agence = agence;
     }
-
-    @ManyToOne
-    private Agence agence;
-
-    private Double prix;
 
     public Date getDateDebut() {
         return dateDebut;

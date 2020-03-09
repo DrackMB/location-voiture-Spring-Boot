@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -28,19 +29,27 @@ public class Categorie implements Serializable {
     private String libelle;
     @ManyToOne
     private Marque marque;
-
+    
     @OneToMany(mappedBy = "categorie")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<VoiturePricing> voiturePricing;
-
     private int siege;
     private int porte;
+
+   
 
     public String getLibelle() {
         return libelle;
     }
-
+   
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+   
+
+    public int getSiege() {
+        return siege;
     }
 
     public Marque getMarque() {
@@ -51,8 +60,12 @@ public class Categorie implements Serializable {
         this.marque = marque;
     }
 
-    public int getSiege() {
-        return siege;
+    public List<VoiturePricing> getVoiturePricing() {
+        return voiturePricing;
+    }
+
+    public void setVoiturePricing(List<VoiturePricing> voiturePricing) {
+        this.voiturePricing = voiturePricing;
     }
 
     public void setSiege(int siege) {

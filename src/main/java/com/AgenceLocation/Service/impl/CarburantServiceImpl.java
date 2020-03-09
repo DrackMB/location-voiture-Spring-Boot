@@ -23,8 +23,21 @@ public class CarburantServiceImpl implements CarburantService{
     CarburantRepository carburantRepository;
     
     public int save(Carburant carburant){
-         carburantRepository.save(carburant);
-        return 1;
+          Carburant foundedCarburant=findByLibelle(carburant.getLibelle());
+        if(foundedCarburant!=null){
+            return -1;
+        }else{
+            carburantRepository.save(carburant);
+        
+             return 1;
+        }
+       
     }
+    
+     @Override
+    public Carburant findByLibelle(String libelle) {
+        return carburantRepository.findByLibelle(libelle);
+    }
+  
     
 }

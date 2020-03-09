@@ -18,8 +18,20 @@ public class TransmitionServiceImpl implements TransmitionService {
     TransmitionRepository transmitionRepository;
 
     public int save(Transmition transmition) {
-        transmitionRepository.save(transmition);
-        return 1;
+         Transmition foundedTransmition=findByLibelle(transmition.getLibelle());
+        if(foundedTransmition!=null){
+            return -1;
+        }else{
+            transmitionRepository.save(transmition);
+        
+             return 1;
+        }
+       
+    }
+
+    @Override
+    public Transmition findByLibelle(String libelle) {
+        return transmitionRepository.findByLibelle(libelle);
     }
 
 }

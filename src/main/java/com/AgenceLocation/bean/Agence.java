@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -30,8 +31,22 @@ public class Agence implements Serializable {
     private String numTele;
     @ManyToOne
     private Ville ville;
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
     @OneToMany(mappedBy = "agence")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<VoiturePricing> voiturePricing;
+    
+    @OneToMany
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Voiture> voitures;
 
     public Ville getVille() {
         return ville;
