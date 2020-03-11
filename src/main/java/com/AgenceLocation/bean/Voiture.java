@@ -41,7 +41,8 @@ public class Voiture implements Serializable {
     private double moyenNote;
     @ManyToOne
     private Agence agence;
-    // Tout a des lites de reveiw 
+    // Tout a des lites de reveiw
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "voiture")
     private List<Review> review;
 

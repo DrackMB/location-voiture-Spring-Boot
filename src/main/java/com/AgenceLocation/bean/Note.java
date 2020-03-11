@@ -29,6 +29,9 @@ public class Note implements Serializable {
         return libelle;
     }
 
+    public Note() {
+    }
+
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }

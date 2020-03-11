@@ -39,7 +39,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     
     public int save(Review review) {
-        Note foundedNote=noteService.FindByLibelle(review.getNote().getLibelle());
+        Note foundedNote=noteService.findByLibelle(review.getNote().getLibelle());
         Client foundedClient=clientService.findByCin(review.getClient().getCin());
         Voiture foundedVoiture=voitureService.findByMatricule(review.getVoiture().getMatricule());
         if(foundedClient==null){
@@ -49,6 +49,9 @@ public class ReviewServiceImpl implements ReviewService {
         }else if(foundedVoiture==null){
             return -3;
         }else{
+            review.setClient(foundedClient);
+            review.setNote(foundedNote);
+            review.setVoiture(foundedVoiture);
             reviewRepository.save(review);
             return 1;
         }

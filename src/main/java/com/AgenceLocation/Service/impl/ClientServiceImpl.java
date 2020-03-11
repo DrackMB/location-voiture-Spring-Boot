@@ -47,5 +47,22 @@ public class ClientServiceImpl implements ClientService {
         int result=clientRepository.deleteByCin(cin);
         return result;
     }
+
+    @Override
+    public int updateClient(String cin, String ncin, String nom, String prenom, String sexe, String adress) {
+        Client fclient=clientRepository.findByCin(cin);
+        if(ncin==null){
+            return -1;
+        }else{
+        fclient.setCin(ncin);
+        fclient.setNom(nom);
+        fclient.setPrenom(prenom);
+        fclient.setSexe(sexe);
+        fclient.setAdress(adress);
+        clientRepository.save(fclient);
+        return 1;
+        
+    }
     
+}
 }

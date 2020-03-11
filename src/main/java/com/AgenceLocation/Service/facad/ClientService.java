@@ -19,6 +19,7 @@ public interface ClientService {
     public List<Client> findAll();
     public int save(Client client);
      public int deleteByCin(String cin);
+     public int updateClient(String cin,String ncin,String nom,String prenom,String sexe,String adress  );
 
     
     

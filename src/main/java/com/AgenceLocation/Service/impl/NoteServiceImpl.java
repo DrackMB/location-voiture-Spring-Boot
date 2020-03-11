@@ -11,6 +11,7 @@ import com.AgenceLocation.bean.Note;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -21,6 +22,11 @@ public class NoteServiceImpl implements NoteService{
     @Autowired
     NoteRepository noteRepository;
 
+    /**
+     *
+     * @param libelle
+     * @return
+     */
     public Note findByLibelle(String libelle) {
         return noteRepository.findByLibelle(libelle);
     }
@@ -30,29 +36,20 @@ public class NoteServiceImpl implements NoteService{
        return noteRepository.findAll();
     }
 
-   
-    @Override
-    public Note FindByLibelle(String libelle) {
-       return noteRepository.findByLibelle(libelle);
-    }
-
     @Override
     public int save(Note note) {
         Note foundedNote=noteRepository.findByLibelle(note.getLibelle());
-        String foundedlibelle=foundedNote.getLibelle();
           if (foundedNote!=null) {
               return -1;}
               else if(note.getLibelle()==null){
                return -2;
-             }else if(note.getLibelle()==foundedlibelle){
-                          return -3;
-                      }
+             }
               else {
                   noteRepository.save(note);
                   return 1;
               }   }
 
-    @Override
+     @Transactional
     public int deleteByLibelle(String libelle) {
         int result=noteRepository.deleteByLibelle(libelle);
         return result;

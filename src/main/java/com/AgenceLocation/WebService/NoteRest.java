@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("AgenceLocation/note")
 public class NoteRest {
-  @Autowired
-  NoteService noteService;
+     @Autowired
+     NoteService noteService;
      
     @DeleteMapping("/libelle/{libelle}")
     public int deleteByLibelle(@PathVariable String libelle) {
@@ -37,8 +37,8 @@ public class NoteRest {
         return noteService.save(note);
     }
     @GetMapping("/libelle/{libelle}")
-    public Note FindByLibelle(@PathVariable String libelle) {
-        return noteService.FindByLibelle(libelle);
+    public Note findByLibelle(@PathVariable String libelle) {
+        return noteService.findByLibelle(libelle);
     }
     
    
