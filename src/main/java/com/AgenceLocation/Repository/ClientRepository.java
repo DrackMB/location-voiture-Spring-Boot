@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Long> {
   public Client findByCin(String cin);
+  public int deleteByCin(String cin);
   
   
     

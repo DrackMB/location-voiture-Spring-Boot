@@ -18,6 +18,8 @@ public interface ClientService {
     public Client findByCin(String cin);
     public List<Client> findAll();
     public int save(Client client);
+     public int deleteByCin(String cin);
+
     
     
 }

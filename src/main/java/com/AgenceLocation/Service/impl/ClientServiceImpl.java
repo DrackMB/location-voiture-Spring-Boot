@@ -11,6 +11,7 @@ import com.AgenceLocation.bean.Client;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -39,6 +40,12 @@ public class ClientServiceImpl implements ClientService {
         else{   clientRepository.save(client);
         return 1;
         }
+    }
+
+    @Transactional
+    public int deleteByCin(String cin) {
+        int result=clientRepository.deleteByCin(cin);
+        return result;
     }
     
 }

@@ -9,6 +9,7 @@ import com.AgenceLocation.Service.facad.ClientService;
 import com.AgenceLocation.bean.Client;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientRest {
     @Autowired
     ClientService clientService;
+    
+    @DeleteMapping("/cin/{cin}")
+    public int deleteByCin(@PathVariable String cin) {
+        return clientService.deleteByCin(cin);
+    }
 
     @PostMapping("/")
     public int save (@RequestBody Client client) {

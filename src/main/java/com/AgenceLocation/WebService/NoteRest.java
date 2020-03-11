@@ -9,6 +9,7 @@ import com.AgenceLocation.Service.facad.NoteService;
 import com.AgenceLocation.bean.Note;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class NoteRest {
   @Autowired
   NoteService noteService;
+     
+    @DeleteMapping("/libelle/{libelle}")
+    public int deleteByLibelle(@PathVariable String libelle) {
+        return noteService.deleteByLibelle(libelle);
+    }
     
     @PostMapping("/")
     public int save(@RequestBody Note note) {

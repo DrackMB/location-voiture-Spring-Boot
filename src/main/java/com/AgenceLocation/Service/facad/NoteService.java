@@ -19,4 +19,8 @@ public interface NoteService {
     public int save(Note note);
 
     public Note FindByLibelle(String libelle);
+    
+    
+    public int deleteByLibelle(String libelle) ;
+
 }

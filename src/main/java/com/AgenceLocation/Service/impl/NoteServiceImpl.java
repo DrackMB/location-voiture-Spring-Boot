@@ -51,6 +51,12 @@ public class NoteServiceImpl implements NoteService{
                   noteRepository.save(note);
                   return 1;
               }   }
+
+    @Override
+    public int deleteByLibelle(String libelle) {
+        int result=noteRepository.deleteByLibelle(libelle);
+        return result;
+    }
     
     
 }
