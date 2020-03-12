@@ -5,13 +5,11 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.bean.Administrateur;
-
 /**
  *
  * @author dell
  */
-public interface AdministrateurService {
-    public void save(Administrateur administrateur);
+public interface LocationService {
+    
     
 }

@@ -29,12 +29,11 @@ public class Location implements Serializable {
     private Long id;
     @ManyToOne
     private Client client;
-    private Double prixTotal;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateLocation;
     @OneToMany(mappedBy = "location")
     private List<LocationDetail> locationDetails;
-
+    private Double prixTotal;  
     public List<LocationDetail> getLocationDetails() {
         return locationDetails;
     }

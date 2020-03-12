@@ -5,16 +5,15 @@
  */
 package com.AgenceLocation.Repository;
 
-import com.AgenceLocation.bean.Categorie;
+import com.AgenceLocation.bean.LocationDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author HP
+ * @author dell
  */
-
 @Repository
-public interface CategorieRepository extends JpaRepository<Categorie,Long> {
-  Categorie findByLibelle(String libelle);
+public interface LocationDetailRepository extends JpaRepository<LocationDetail,Long>{
+    
 }

@@ -49,7 +49,8 @@ public class NoteServiceImpl implements NoteService{
                   return 1;
               }   }
 
-     @Transactional
+    @Transactional
+    @Override
     public int deleteByLibelle(String libelle) {
         int result=noteRepository.deleteByLibelle(libelle);
         return result;
