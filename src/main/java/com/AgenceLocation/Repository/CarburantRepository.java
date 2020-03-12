@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,5 +17,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CarburantRepository extends JpaRepository<Carburant, Long>{
     Carburant findByLibelle(String libelle);
+
+    public Carburant deleteByLibelle(String libelle);
     
 }
+

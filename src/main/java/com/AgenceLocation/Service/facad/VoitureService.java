@@ -6,7 +6,6 @@
 package com.AgenceLocation.Service.facad;
 
 //import com.AgenceLocation.bean.Agence;
-import com.AgenceLocation.bean.Agence;
 import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 
@@ -23,8 +22,15 @@ public interface VoitureService {
     Voiture findByMatricule(String matricule);
 
     List<Voiture> findByCode(String code);
-    
-    Voiture findByCategorieLibelleAndAgenceNom(String libelle,String nom);
+
+    Voiture findByCategorieLibelleAndAgenceNom(String libelle, String nom);
+
+    Voiture findByCategorielibelle(String libelle, String code);
+
+    int deleteByMatricule(String matricule);
+
+    List<Voiture> findByTransmitionLibelle(String libelle);
+    List<Voiture> findByCarburantLibelle(String libelle);
     
     
 

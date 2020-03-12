@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +10,7 @@ import com.AgenceLocation.Service.facad.VoitureService;
 import com.AgenceLocation.bean.Voiture;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,4 +52,29 @@ public class VoitureRest {
         
     }
     
+    @GetMapping("/libelle/{libelle}/code/{code}")
+    public Voiture findByCategorielibelle (@PathVariable String libelle,@PathVariable String code){
+        return voitureService.findByCategorielibelle(libelle,code);
+        
+    }
+    @GetMapping("Trans/libelle/{libelle}")
+    public List<Voiture> findByTransmitionLibelle(@PathVariable String libelle) {
+        return voitureService.findByTransmitionLibelle(libelle);
+    }
+    
+    @GetMapping("Carb/libelle/{libelle}")
+    public List<Voiture> findByCarburantLibelle(@PathVariable String libelle) {
+        return voitureService.findByCarburantLibelle(libelle);
+    }
+    
+    @GetMapping("Catgagc/libelle/{libelle}/nom/{nom}")
+    public Voiture findByCategorieLibelleAndAgenceNom(@PathVariable String libelle, @PathVariable String nom){
+        return voitureService.findByCategorieLibelleAndAgenceNom(libelle, nom);
+    }
+    
+    @DeleteMapping("voit/matricule/{matricule}")
+    public int deleteByMatricule(@PathVariable String matricule){
+        return voitureService.deleteByMatricule(matricule);
+    }
 }
+

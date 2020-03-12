@@ -1,3 +1,8 @@
+
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class VoitureServiceImpl implements VoitureService {
@@ -35,6 +41,13 @@ public class VoitureServiceImpl implements VoitureService {
     @Autowired
     private TransmitionService transmitionService;
 
+    /*@Override
+    public int save(Voiture voiture) {
+        /*System.out.println("fa9er dem + ma3nedha 3osbone");
+        System.out.println("voiture = " + voiture);
+        return -1;*/
+        
+    //}
     @Override
     public int save(Voiture voiture) {
         Voiture foundedVoiture = findByMatricule(voiture.getMatricule());
@@ -78,7 +91,7 @@ public class VoitureServiceImpl implements VoitureService {
         List<Voiture> res = new ArrayList();
         List<Voiture> voit = findAll();
         for (Voiture v : voit) {
-            if (code == v.getAgence().getCode()) {
+            if (code.equals(v.getAgence().getCode())) {
                 res.add(v);
 
             }
@@ -90,12 +103,44 @@ public class VoitureServiceImpl implements VoitureService {
 
     @Override
     public Voiture findByCategorieLibelleAndAgenceNom(String libelle, String nom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List <Voiture> res=findAll();
+        Voiture voitr=null;
+        for (Voiture voit : res) {
+            if(libelle.equals(voit.getCategorie().getLibelle())&& nom.equals(voit.getAgence().getNom())){
+                 voitr = voit;   
+        }}
+        
+        return voitr;
+        
+    }
+
+    @Override
+    public Voiture findByCategorielibelle(String libelle,String code) {
+        List<Voiture> resultat=findByCode(code);
+        Voiture v = null;
+        for(Voiture r :resultat){
+           if(libelle.equals(r.getCategorie().getLibelle())){
+               v=r;
+           }
+           
+        }
+       return v;
+    }
+
+    @Transactional
+    public int deleteByMatricule(String matricule) {
+       return voitureRepository.deleteByMatricule(matricule);
+    }
+
+    @Override
+    public List<Voiture> findByTransmitionLibelle(String libelle) {
+       return voitureRepository.findByTransmitionLibelle(libelle);
+    }
+
+    @Override
+    public List<Voiture> findByCarburantLibelle(String libelle) {
+        return voitureRepository.findByCarburantLibelle(libelle);
     }
 }
 
-/* @Override
-    public Voiture findByCategorieLibelleAndAgenceNom(String libelle,String nom) {
-        return voitureRepository.findByCategorieLibelleAndAgenceNom(libelle, nom);
-    }
- */
+

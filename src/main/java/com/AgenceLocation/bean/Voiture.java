@@ -34,7 +34,7 @@ public class Voiture implements Serializable {
     private Carburant carburant;
     @ManyToOne
     private Transmition transmition;
-    
+
     private String matricule;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateMiseEnCirculation;
@@ -44,10 +44,10 @@ public class Voiture implements Serializable {
     // Tout a des lites de reveiw
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "voiture")
-    private List<Review> review;
+   private List<Review> review;
 
     // Prix standare de voiture
-    private int PrixInitial;
+    private int prixinitial;
 
     public Agence getAgence() {
         return agence;
@@ -61,16 +61,19 @@ public class Voiture implements Serializable {
         return review;
     }
 
-    public void setReview(List<Review> review) {
+    /*public void setReview(List<Review> review) {
         this.review = review;
-    }
-    public int getPrixInitial() {
-        return PrixInitial;
+    }*/
+
+    public int getPrixinitial() {
+        return prixinitial;
     }
 
-    public void setPrixInitial(int PrixInitial) {
-        this.PrixInitial = PrixInitial;
+    public void setPrixinitial(int prixinitial) {
+        this.prixinitial = prixinitial;
     }
+
+    
 
     public Categorie getCategorie() {
         return categorie;
@@ -100,7 +103,7 @@ public class Voiture implements Serializable {
         return matricule;
     }
 
-    public void setMatricule(String  matricule) {
+    public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
@@ -150,7 +153,7 @@ public class Voiture implements Serializable {
 
     @Override
     public String toString() {
-        return "com.AgenceLocation.bean.Voiture[ id=" + id + " ]";
+        return "Voiture{" + "id=" + id + ", categorie=" + categorie.getLibelle() + ", carburant=" + carburant.getLibelle() + ", transmition=" + transmition.getLibelle() + ", matricule=" + matricule + ", dateMiseEnCirculation=" + dateMiseEnCirculation + ", moyenNote=" + moyenNote + ", agence=" + agence.getCode() + ", PrixInitial=" + prixinitial + '}';
     }
 
 }

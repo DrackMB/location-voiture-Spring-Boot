@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -51,7 +52,7 @@ public class VoiturePricingServiceImpl implements VoiturePricingService {
          VoiturePricing voiturePricings = findByCategorieLibelle(voiture.getCategorie().getLibelle());
          if (voiturePricings==null){
            VoiturePricing voiturePricing=new VoiturePricing();
-           double finalPrice=(double) voiture.getPrixInitial()*porcentage;
+           double finalPrice=(double) voiture.getPrixinitial()*porcentage;
            voiturePricing.setPrix(finalPrice);
            voiturePricing.setDateDebut(dateDebu);
            voiturePricing.setDatefin(dateFinal);
@@ -67,7 +68,7 @@ public class VoiturePricingServiceImpl implements VoiturePricingService {
                          && voiturePricings.getDateDebut().getTime()<new Date().getTime()
                          ){
                      voiturePricings.setDatefin(dateFinal);
-                     voiturePricings.setPrix(((double)voiture.getPrixInitial()*porcentage)/100);
+                     voiturePricings.setPrix(((double)voiture.getPrixinitial()*porcentage)/100);
                      voiturePricingRepository.save(voiturePricings);
                      return  2;
                      
@@ -102,7 +103,7 @@ public class VoiturePricingServiceImpl implements VoiturePricingService {
         }
         voiturePricing.setDateDebut(new Date());
         Voiture voiture = voitureService.findByCategorieLibelleAndAgenceNom(libelle, voiturePricing.getAgence().getNom());
-        voiturePricing.setPrix( voiture.getPrixInitial()-(((double)voiture.getPrixInitial()*porcentage)/100));
+        voiturePricing.setPrix( voiture.getPrixinitial()-(((double)voiture.getPrixinitial()*porcentage)/100));
         voiturePricing.setDatefin(dateFinal);
         voiturePricingRepository.save(voiturePricing);
         return 1;
@@ -115,3 +116,4 @@ public class VoiturePricingServiceImpl implements VoiturePricingService {
 
     
 }
+
