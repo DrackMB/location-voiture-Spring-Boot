@@ -10,6 +10,7 @@ package com.AgenceLocation.Service.facad;
  * @author dell
  */
 public interface LocationService {
+   
     
     
 }
