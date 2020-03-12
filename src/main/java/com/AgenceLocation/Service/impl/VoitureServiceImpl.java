@@ -117,14 +117,14 @@ public class VoitureServiceImpl implements VoitureService {
     @Override
     public Voiture findByCategorielibelle(String libelle,String code) {
         List<Voiture> resultat=findByCode(code);
-        Voiture v = null;
+        Voiture vo = null;
         for(Voiture r :resultat){
            if(libelle.equals(r.getCategorie().getLibelle())){
-               v=r;
+               vo=r;
            }
            
         }
-       return v;
+       return vo;
     }
 
     @Transactional
