@@ -15,7 +15,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ReviewRepository extends JpaRepository<Review,Long> {
-   public List<Review> findAll();  
+   public List<Review> findAll();
+   public Review findByReviewClientCinAndVoitureMatricule(String cin,String Matricule);
  
     
 }
