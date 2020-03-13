@@ -57,8 +57,14 @@ public class ReviewServiceImpl implements ReviewService {
         }
         
     }
+
+    @Override
+    public int deleteId(Long id) {
+        return reviewRepository.deleteId(id);
+    }
+
+    }
     
-}
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

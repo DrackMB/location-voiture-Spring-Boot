@@ -30,17 +30,9 @@ public class Review implements Serializable {
     private Client client;
     @ManyToOne
     private Voiture voiture;
-
-    private String objet;
     private String corps;
 
-    public String getObjet() {
-        return objet;
-    }
-
-    public void setObjet(String objet) {
-        this.objet = objet;
-    }
+    
 
     public String getCorps() {
         return corps;

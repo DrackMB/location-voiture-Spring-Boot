@@ -42,11 +42,10 @@ public class NoteServiceImpl implements NoteService{
           if (foundedNote!=null) {
               return -1;}
               else if(note.getLibelle()==null){
-               return -2;
-             }
+               return -2;}        
               else {
                   noteRepository.save(note);
-                  return 1;
+                  return 1; 
               }   }
 
     @Transactional
@@ -55,6 +54,17 @@ public class NoteServiceImpl implements NoteService{
         int result=noteRepository.deleteByLibelle(libelle);
         return result;
     }
+
+    @Override
+    public int UpdateNote(String libelle, int moyen) {
+         Note founded=noteRepository.findByLibelle(libelle);
+         if(moyen<0 && moyen>100 ){
+             return -1;
+         }
+         founded.setMoyen(moyen);
+         noteRepository.save(founded);
+         return 1;
+            }
     
     
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class NoteRest {
      @Autowired
      NoteService noteService;
+
+    @PutMapping("/libelle/{libelle}/moyen/{moyen}")
+    public int UpdateNote(@PathVariable String libelle,@PathVariable int moyen) {
+        return noteService.UpdateNote(libelle, moyen);
+    }
      
     @DeleteMapping("/libelle/{libelle}")
     public int deleteByLibelle(@PathVariable String libelle) {

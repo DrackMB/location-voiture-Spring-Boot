@@ -15,5 +15,7 @@ import java.util.List;
 public interface ReviewService {
   public List<Review> findAll();
   public int save(Review review);
+  int deleteId(Long id);
+  
   
 }

@@ -22,5 +22,7 @@ public interface NoteService {
     
     
     public int deleteByLibelle(String libelle) ;
+    
+    public int UpdateNote(String libelle,int moyen );
 
 }
