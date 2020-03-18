@@ -42,7 +42,7 @@ public class ReviewServiceImpl implements ReviewService {
         Note foundedNote=noteService.findByLibelle(review.getNote().getLibelle());
         Client foundedClient=clientService.findByCin(review.getClient().getCin());
         Voiture foundedVoiture=voitureService.findByMatricule(review.getVoiture().getMatricule());
-        Review foundedReview=findByReviewClientCinAndVoitureMatricule(review.getClient().getCin(),review.getVoiture().getMatricule() );
+        Review foundedReview=findByClientCinAndVoitureMatricule(review.getClient().getCin(),review.getVoiture().getMatricule() );
         if(foundedClient==null){
             return -1;
         }else if(foundedNote==null){
@@ -63,8 +63,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review findByReviewClientCinAndVoitureMatricule(String cin, String Matricule) {
-   return reviewRepository.findByReviewClientCinAndVoitureMatricule(cin, Matricule);    }
+    public Review findByClientCinAndVoitureMatricule(String cin, String Matricule) {
+   return reviewRepository.findByClientCinAndVoitureMatricule(cin, Matricule);    }
     
 }
 /*

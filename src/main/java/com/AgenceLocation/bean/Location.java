@@ -34,6 +34,9 @@ public class Location implements Serializable {
     @OneToMany(mappedBy = "location")
     private List<LocationDetail> locationDetails;
     private Double prixTotal;  
+    
+    
+    
     public List<LocationDetail> getLocationDetails() {
         return locationDetails;
     }
