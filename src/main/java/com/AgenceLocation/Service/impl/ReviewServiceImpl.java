@@ -43,7 +43,7 @@ public class ReviewServiceImpl implements ReviewService {
         Note foundedNote=noteService.findByLibelle(review.getNote().getLibelle());
         Client foundedClient=clientService.findByCin(review.getClient().getCin());
         Voiture foundedVoiture=voitureService.findByMatricule(review.getVoiture().getMatricule());
-        Review foundedReview=findByReviewClientCinAndVoitureMatricule(review.getClient().getCin(),review.getVoiture().getMatricule() );
+        Review foundedReview=findByClientCinAndVoitureMatricule(review.getClient().getCin(),review.getVoiture().getMatricule() );
         if(foundedClient==null){
             return -1;
         }else if(foundedNote==null){
@@ -64,12 +64,10 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review findByReviewClientCinAndVoitureMatricule(String cin, String Matricule) {
-   return reviewRepository.findByReviewClientCinAndVoitureMatricule(cin, Matricule);    }
+    public Review findByClientCinAndVoitureMatricule(String cin, String Matricule) {
+   return reviewRepository.findByClientCinAndVoitureMatricule(cin, Matricule);    }
     
-    public int deleteId(Long id) {
-        return reviewRepository.deleteId(id);
-    }
+   
 
     @Override
     public int updateReview(Long id, String corps,String lib ) {
@@ -87,6 +85,21 @@ public class ReviewServiceImpl implements ReviewService {
         
     }
 
+    @Override
+    public int deleteId(Review review) {
+        Long foundedId=review.getId();
+        Optional<Review> found=reviewRepository.findById(review.getId());
+        if(found!=null){
+          reviewRepository.deleteById(foundedId);
+          return 1;
+  
+        }else return -1;
+    }
+
+    @Override
+    public List<Review> findByVoitureCategorieLibelle(String libelle) {
+        return reviewRepository.findByVoitureCategorieLibelle(libelle);
+    }
     }
     
 /*

@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package com.AgenceLocation.Repository;
+
 import com.AgenceLocation.bean.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+
 
 /**
  *
@@ -19,7 +22,8 @@ public interface ReviewRepository extends JpaRepository<Review,Long> {
    @Query("DELETE from Review r where r.id=:id")
    int deleteId(@Param(value = "id") Long id);
    
-   public Review findByReviewClientCinAndVoitureMatricule(String cin,String Matricule);
+   public Review findByClientCinAndVoitureMatricule(String cin,String Matricule);
+   public List<Review> findByVoitureCategorieLibelle(String libelle );
  
-    
 }
+
