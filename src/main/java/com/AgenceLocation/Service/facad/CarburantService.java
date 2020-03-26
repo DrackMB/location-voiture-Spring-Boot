@@ -8,6 +8,7 @@ package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.Repository.*;
 import com.AgenceLocation.bean.Carburant;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +21,7 @@ public interface CarburantService {
     int save(Carburant carburant);
     Carburant findByLibelle(String libelle);
    public Carburant deleteByLibelle(String libelle);
+   List<Carburant> findAll();
     
 }
 

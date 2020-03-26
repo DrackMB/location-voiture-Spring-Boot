@@ -162,6 +162,9 @@ public class VoitureServiceImpl implements VoitureService {
     
    
     
+    public Voiture findByCategorieLibelle(String libelle) {
+        return voitureRepository.findByCategorieLibelle(libelle);
+    }
 }
 
 

@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -37,6 +38,10 @@ public class VoiturePricing implements Serializable {
     private Categorie categorie;
     private Double prix;
 
+    public VoiturePricing() {
+    }
+
+    
     public Categorie getcategorie() {
         return categorie;
     }

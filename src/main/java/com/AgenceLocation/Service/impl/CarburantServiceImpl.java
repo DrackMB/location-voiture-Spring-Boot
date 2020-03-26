@@ -10,6 +10,7 @@ package com.AgenceLocation.Service.impl;
 import com.AgenceLocation.Repository.CarburantRepository;
 import com.AgenceLocation.Service.facad.CarburantService;
 import com.AgenceLocation.bean.Carburant;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,11 @@ public class CarburantServiceImpl implements CarburantService{
     @Override
     public Carburant deleteByLibelle(String libelle) {
         return carburantRepository.deleteByLibelle(libelle);
+    }
+
+    @Override
+    public List<Carburant> findAll() {
+       return carburantRepository.findAll();
     }
 
     

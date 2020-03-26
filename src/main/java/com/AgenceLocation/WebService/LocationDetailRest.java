@@ -6,7 +6,6 @@
 package com.AgenceLocation.WebService;
 
 import com.AgenceLocation.Service.facad.LocationDetailService;
-import com.AgenceLocation.bean.Location;
 import com.AgenceLocation.bean.LocationDetail;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,16 +31,16 @@ public class LocationDetailRest {
     public int save(@RequestBody LocationDetail locationDetail) {
         return locationDetailService.save(locationDetail,locationDetail.getLocation());
     }
-    @GetMapping("/Clientcin/{Cin}")
+    @GetMapping("/clientcin/{Cin}")
     public List<LocationDetail> findByLocationClientCin(@PathVariable String Cin) {
         return locationDetailService.findByLocationClientCin(Cin);
     }
-    @DeleteMapping("/cin/{cin}/Voiturmatricule/{matricule}")
-    public int deleteByLocationClientCinAndVoitureMatricule(String cin, String matricule) {
+    @DeleteMapping("/cin/{cin}/voiture/{matricule}")
+    public int deleteByLocationClientCinAndVoitureMatricule(@PathVariable String cin,@PathVariable String matricule) {
         return locationDetailService.deleteByLocationClientCinAndVoitureMatricule(cin, matricule);
     }
     @GetMapping("/clientCin/{Cin}/matricul/{matricule}")
-    public List<LocationDetail> findByLocationClientCinAndVoitureMatricule(String Cin, String matricule) {
+    public List<LocationDetail> findByLocationClientCinAndVoitureMatricule(@PathVariable String Cin,@PathVariable String matricule) {
         return locationDetailService.findByLocationClientCinAndVoitureMatricule(Cin, matricule);
     }
    

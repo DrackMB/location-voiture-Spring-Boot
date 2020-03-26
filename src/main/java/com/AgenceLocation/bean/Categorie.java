@@ -39,18 +39,19 @@ public class Categorie implements Serializable {
     private int siege;
     private int porte;
 
-   
+    public Categorie() {
+    }
 
+    
     public String getLibelle() {
         return libelle;
     }
-   
+
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
 
-   
-
+    
     public int getSiege() {
         return siege;
     }

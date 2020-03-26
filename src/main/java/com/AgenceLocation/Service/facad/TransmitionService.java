@@ -5,9 +5,8 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.Repository.*;
 import com.AgenceLocation.bean.Transmition;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 /**
  *
@@ -17,5 +16,6 @@ public interface TransmitionService {
 
     int save(Transmition transmition);
     Transmition findByLibelle(String libelle);
+    List<Transmition> findAll();
 
 }

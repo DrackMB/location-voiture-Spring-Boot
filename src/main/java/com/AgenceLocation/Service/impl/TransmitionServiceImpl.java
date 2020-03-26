@@ -8,6 +8,7 @@ package com.AgenceLocation.Service.impl;
 import com.AgenceLocation.Service.facad.*;
 import com.AgenceLocation.Repository.*;
 import com.AgenceLocation.bean.Transmition;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,11 @@ public class TransmitionServiceImpl implements TransmitionService {
     @Override
     public Transmition findByLibelle(String libelle) {
         return transmitionRepository.findByLibelle(libelle);
+    }
+
+    @Override
+    public List<Transmition> findAll() {
+        return transmitionRepository.findAll();
     }
 
 }

@@ -19,7 +19,7 @@ public interface VoiturePricingRepository extends JpaRepository<VoiturePricing, 
 
     int deleteByCategorieLibelle(String  libelle);
 
-    VoiturePricing findByCategorieLibelle(String  libelle);
+    VoiturePricing findByCategorieLibelle(String libelle);
     
     List<VoiturePricing> findByAgenceNom(String nom);
     

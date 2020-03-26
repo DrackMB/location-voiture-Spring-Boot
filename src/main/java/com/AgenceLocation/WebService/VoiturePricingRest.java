@@ -1,9 +1,10 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package com.AgenceLocation.WebService;
+
 import com.AgenceLocation.bean.Voiture;
 import com.AgenceLocation.Service.facad.VoiturePricingService;
 import com.AgenceLocation.bean.VoiturePricing;
@@ -12,6 +13,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author dell
  */
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/VoiturePricing/")
+@RequestMapping("/VoiturePricing")
 public class VoiturePricingRest {
+
     @Autowired
     VoiturePricingService voiturePricingService;
 
@@ -35,32 +39,36 @@ public class VoiturePricingRest {
     public List<VoiturePricing> findAll() {
         return voiturePricingService.findAll();
     }
-    @PostMapping("/Porcentage/{Porcentage}/dateFinal/{dateFinal}/dateDebu/{dateDebu}")
-    public int save(@RequestBody Voiture voiture,@PathVariable int Porcentage,@PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateFinal,@PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateDebu) {
-        return voiturePricingService.save(voiture, Porcentage, dateFinal, dateDebu);
+    @PostMapping("/Porcentage/{porcentage}")
+    public int save(@RequestBody VoiturePricing voiturePricing, @PathVariable int porcentage) {
+        return voiturePricingService.save(voiturePricing, porcentage);
     }
+
     @Transactional
     @DeleteMapping("/CategorieLibelle/{libelle}")
     public int deleteByCategorieLibelle(@PathVariable String libelle) {
         return voiturePricingService.deleteByCategorieLibelle(libelle);
     }
-    @GetMapping("categorie/liblle/{libelle}")
-    public  VoiturePricing findByCategorieLibelle( @PathVariable String libelle) {
+    @GetMapping("/CategorieLibelle/{libelle}")
+    public VoiturePricing findByCategorieLibelle( @PathVariable String libelle) {
         return voiturePricingService.findByCategorieLibelle(libelle);
     }
+
+   
+
     @PutMapping("/categorie/{libelle}/date/{dateFinal}/porcentage/{porcentage}")
-    public int updateVoiturePricing(@PathVariable String libelle,@PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateFinal,@PathVariable int porcentage) {
+    public int updateVoiturePricing(@PathVariable String libelle, @PathVariable @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateFinal, @PathVariable int porcentage) {
         return voiturePricingService.updateVoiturePricing(libelle, dateFinal, porcentage);
     }
+
     @GetMapping("/Agence/nom/{nom}")
     public List<VoiturePricing> findByAgenceNom(@PathVariable String nom) {
         return voiturePricingService.findByAgenceNom(nom);
     }
-    
+
     // voire avec prof
     public void checkeExistancePromo() {
         voiturePricingService.checkeExistancePromo();
     }
-    
-    
+
 }

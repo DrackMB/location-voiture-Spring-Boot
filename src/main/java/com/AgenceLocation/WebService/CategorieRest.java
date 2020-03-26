@@ -23,14 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author HP
  */
-
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("agencelocation/categorie")
 public class CategorieRest {
+
     @Autowired
     private CategorieService categorieService;
-    
+
     @PostMapping("/")
     public int save(@RequestBody Marque marque, List<Categorie> categories) {
        return categorieService.save(marque, categories);
@@ -46,6 +47,4 @@ public class CategorieRest {
     public Categorie findByLibelle(@PathVariable String libelle) {
         return categorieService.findByLibelle(libelle);
     }
-    
-    
 }

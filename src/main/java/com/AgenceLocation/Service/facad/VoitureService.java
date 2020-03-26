@@ -31,11 +31,13 @@ public interface VoitureService {
     int deleteByMatricule(String matricule);
 
     List<Voiture> findByTransmitionLibelle(String libelle);
+
     List<Voiture> findByCarburantLibelle(String libelle);
     
     int updateVoiture(String matricule,double moyenNote,int prixinitial);
     
   
+    Voiture findByCategorieLibelle(String libelle);
     
 
 }

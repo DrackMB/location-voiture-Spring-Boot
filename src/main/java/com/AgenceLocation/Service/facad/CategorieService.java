@@ -17,8 +17,5 @@ public interface CategorieService {
     int save(Marque marque, List<Categorie> categories);
     List<Categorie>findAll();
     Categorie findByLibelle(String libelle);
-    
 
-  
-    
 }

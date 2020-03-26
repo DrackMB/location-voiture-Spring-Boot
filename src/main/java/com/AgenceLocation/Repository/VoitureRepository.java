@@ -22,9 +22,13 @@ public interface VoitureRepository extends JpaRepository<Voiture, Long> {
     Voiture findByCategorieLibelleAndAgenceNom(String libelle, String nom);
 
     Voiture findByMatricule(String matricule);
-    int deleteByMatricule(String matricule);
-   List <Voiture> findByTransmitionLibelle(String libelle);
-    List <Voiture> findByCarburantLibelle(String libelle);
 
+    int deleteByMatricule(String matricule);
+
+    List<Voiture> findByTransmitionLibelle(String libelle);
+
+    List<Voiture> findByCarburantLibelle(String libelle);
+    
+    Voiture findByCategorieLibelle(String libelle);
 
 }

@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.Service.facad;
 
+import com.AgenceLocation.bean.Categorie;
 import com.AgenceLocation.bean.Voiture;
 import com.AgenceLocation.bean.VoiturePricing;
 import java.util.Date;
@@ -16,19 +17,19 @@ import java.util.List;
  */
 public interface VoiturePricingService {
 
-    public List<VoiturePricing> findAll();
+     List<VoiturePricing> findAll();
 
-    int save(Voiture voiture, int porcentage, Date dateFinal,Date dateDebu);
+    int save(VoiturePricing voiturePricing, int porcentage);
 
     int deleteByCategorieLibelle(String libelle);
-   // veifier avec le prof
-    VoiturePricing findByCategorieLibelle(String  libelle);
+    // veifier avec le prof
+
+    VoiturePricing findByCategorieLibelle(String libelle);
 
     void checkeExistancePromo();
-    
-    int updateVoiturePricing(String libelle , Date dateFinal,int  porcentage );
-    
+
+    int updateVoiturePricing(String libelle, Date dateFinal, int porcentage);
+
     List<VoiturePricing> findByAgenceNom(String nom);
-     
 
 }
