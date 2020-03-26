@@ -5,7 +5,6 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.bean.Note;
 import com.AgenceLocation.bean.Review;
 import java.util.List;
 
@@ -16,12 +15,5 @@ import java.util.List;
 public interface ReviewService {
   public List<Review> findAll();
   public int save(Review review);
-  public Review findByClientCinAndVoitureMatricule(String cin,String Matricule);
-  public int updateReview(Long id,String corps,String lib);
-  int deleteId(Review review );
-  public List<Review> findByVoitureCategorieLibelle(String libelle );
-
-  
-
   
 }

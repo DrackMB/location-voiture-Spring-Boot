@@ -5,27 +5,11 @@
  */
 package com.AgenceLocation.Service.facad;
 
-import com.AgenceLocation.bean.Location;
-import com.AgenceLocation.bean.LocationDetail;
-import java.util.Date;
-import java.util.List;
-
 /**
  *
  * @author dell
  */
 public interface LocationService {
-   int save(Location location);
-   
-   Location findByDateLocationAndClientCin(Date dateLocation , String cin);
-   
-   int deleteBylocation(Location  location);
-   
-   List<Location> findByClientCin(String Cin);
-   
-   
-   
-   
    
     
     

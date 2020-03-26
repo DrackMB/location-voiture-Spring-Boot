@@ -6,9 +6,10 @@
 package com.AgenceLocation.Repository;
 
 import com.AgenceLocation.bean.Location;
+import com.AgenceLocation.bean.Voiture;
 import java.util.Date;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,13 +17,9 @@ import org.springframework.stereotype.Repository;
  * @author dell
  */
 @Repository
-public interface LocationRepository extends JpaRepository<Location, Long> {
-
-    Location findByDateLocationAndClientCin(Date dateLocation, String cin);
-
-  //  int deleteBylocationClientCin(String cin);
+public interface LocationRepository extends JpaRepository<Location,Long>{
     
-    List<Location> findByClientCin(String Cin);
-   
-
+    
+    
+    
 }

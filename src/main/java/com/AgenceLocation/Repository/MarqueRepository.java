@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 public interface MarqueRepository extends JpaRepository<Marque, Long> {
 
     Marque findByLibelle(String libelle);
+    
 
 }
 

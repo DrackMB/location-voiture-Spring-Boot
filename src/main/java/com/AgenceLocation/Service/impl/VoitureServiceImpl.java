@@ -23,6 +23,7 @@ import com.AgenceLocation.bean.Categorie;
 import com.AgenceLocation.bean.Transmition;
 import com.AgenceLocation.bean.Voiture;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -132,6 +133,7 @@ public class VoitureServiceImpl implements VoitureService {
     public int deleteByMatricule(String matricule) {
        return voitureRepository.deleteByMatricule(matricule);
     }
+        
 
     @Override
     public List<Voiture> findByTransmitionLibelle(String libelle) {
@@ -142,6 +144,24 @@ public class VoitureServiceImpl implements VoitureService {
     public List<Voiture> findByCarburantLibelle(String libelle) {
         return voitureRepository.findByCarburantLibelle(libelle);
     }
+
+    @Override
+    public int updateVoiture(String matricule,double moyenNote,int prixinitial) {
+       Voiture v=voitureRepository.findByMatricule(matricule);
+       if(v==null){
+           return -1;
+       }else{
+           v.setMoyenNote(moyenNote);
+           v.setPrixinitial(prixinitial);
+           voitureRepository.save(v);
+           return 1; 
+       }
+       
+
+    }
+    
+   
+    
 }
 
 

@@ -6,6 +6,7 @@
 package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.bean.Categorie;
+import com.AgenceLocation.bean.Marque;
 import java.util.List;
 
 /**
@@ -13,8 +14,11 @@ import java.util.List;
  * @author HP
  */
 public interface CategorieService {
-    int save(Categorie categorie);
+    int save(Marque marque, List<Categorie> categories);
     List<Categorie>findAll();
     Categorie findByLibelle(String libelle);
+    
+
+  
     
 }

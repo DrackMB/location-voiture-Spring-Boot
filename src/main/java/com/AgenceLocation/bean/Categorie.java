@@ -7,6 +7,7 @@ package com.AgenceLocation.bean;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,8 @@ public class Categorie implements Serializable {
     private String libelle;
     @ManyToOne
     private Marque marque;
+    
+ 
     
     @OneToMany(mappedBy = "categorie")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

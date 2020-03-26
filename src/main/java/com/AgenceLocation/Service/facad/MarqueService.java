@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.Service.facad;
 
+import com.AgenceLocation.bean.Categorie;
 import com.AgenceLocation.bean.Marque;
 import java.util.List;
 
@@ -19,6 +20,6 @@ public interface MarqueService {
     List<Marque> findAll();
 
     Marque findByLibelle(String libelle);
-
     
+  
 }

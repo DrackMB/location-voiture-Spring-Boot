@@ -7,6 +7,7 @@ package com.AgenceLocation.Service.facad;
 
 //import com.AgenceLocation.bean.Agence;
 import com.AgenceLocation.bean.Voiture;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,9 @@ public interface VoitureService {
     List<Voiture> findByTransmitionLibelle(String libelle);
     List<Voiture> findByCarburantLibelle(String libelle);
     
+    int updateVoiture(String matricule,double moyenNote,int prixinitial);
+    
+  
     
 
 }
