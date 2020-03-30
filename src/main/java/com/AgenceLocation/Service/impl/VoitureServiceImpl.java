@@ -53,9 +53,9 @@ public class VoitureServiceImpl implements VoitureService {
     @Override
     public int save(Voiture voiture) {
         Voiture foundedVoiture = findByMatricule(voiture.getMatricule());
+        Agence agences = agenceService.findByNom(voiture.getAgence().getNom());
         Categorie categories = categorieService.findByLibelle(voiture.getCategorie().getLibelle());
         Carburant carburants = carbuantService.findByLibelle(voiture.getCarburant().getLibelle());
-        Agence agences = agenceService.findByNom(voiture.getAgence().getNom());
         Transmition transmitions = transmitionService.findByLibelle(voiture.getTransmition().getLibelle());
         if (foundedVoiture != null) {
             return -1;
@@ -68,11 +68,12 @@ public class VoitureServiceImpl implements VoitureService {
         } else if (transmitions == null) {
             return -5;
         } else {
+            voitureRepository.save(voiture);
             voiture.setCategorie(categories);
             voiture.setTransmition(transmitions);
             voiture.setAgence(agences);
             voiture.setCarburant(carburants);
-            voitureRepository.save(voiture);
+            
             return 1;
 
         }

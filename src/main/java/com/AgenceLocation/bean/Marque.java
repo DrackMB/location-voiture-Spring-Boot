@@ -31,7 +31,7 @@ public class Marque implements Serializable {
     
     @OneToMany(mappedBy = "marque")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List <Categorie> categorie = new ArrayList<Categorie>();
+    private List <Categorie> categorie;// = new ArrayList<Categorie>();
     
     
      public List<Categorie> getCategorie() {

@@ -14,8 +14,10 @@ import java.util.List;
  * @author HP
  */
 public interface CategorieService {
-    int save(Marque marque, List<Categorie> categories);
+    //int save(Marque marque,List<Categorie> categories);
+    int save(Categorie categorie);
     List<Categorie>findAll();
     Categorie findByLibelle(String libelle);
+    List<Categorie>findByMarqueLibelle(String libelle);
 
 }

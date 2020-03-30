@@ -32,10 +32,16 @@ public class CategorieRest {
     private CategorieService categorieService;
 
     @PostMapping("/")
-    public int save(@RequestBody Marque marque, List<Categorie> categories) {
-       return categorieService.save(marque, categories);
+    public int save(@RequestBody Categorie categorie) {
+       return categorieService.save(categorie);
       
     }
+
+  /* @PostMapping("/")
+    public int save(@RequestBody Marque marque, List<Categorie> categories) {
+        return categorieService.save(marque, categories);
+    }*/
+   
 
     @GetMapping("/find")
     public List<Categorie> findAll() {
@@ -46,4 +52,11 @@ public class CategorieRest {
     public Categorie findByLibelle(@PathVariable String libelle) {
         return categorieService.findByLibelle(libelle);
     }
+
+    @GetMapping("/cat/libelle/{libelle}")
+    public List<Categorie> findByMarqueLibelle(@PathVariable String libelle) {
+        return categorieService.findByMarqueLibelle(libelle);
+    }
+    
+    
 }

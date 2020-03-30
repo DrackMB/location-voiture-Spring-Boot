@@ -6,6 +6,7 @@
 package com.AgenceLocation.Repository;
 
 import com.AgenceLocation.bean.Categorie;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,5 +18,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CategorieRepository extends JpaRepository<Categorie,Long> {
   Categorie findByLibelle(String libelle);
+  List<Categorie>findByMarqueLibelle(String libelle);
   
 }

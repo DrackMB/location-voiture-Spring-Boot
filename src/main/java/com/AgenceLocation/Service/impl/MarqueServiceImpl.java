@@ -38,7 +38,7 @@ public class MarqueServiceImpl implements MarqueService{
         }
             else{
              marqueRepository.save(marque);
-             categorieService.save(marque,marque.getCategorie());
+            // categorieService.save(marque,marque.getCategorie());
              return 1;
         }
        
