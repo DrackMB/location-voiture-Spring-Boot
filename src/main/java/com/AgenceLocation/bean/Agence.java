@@ -29,17 +29,9 @@ public class Agence implements Serializable {
     private String nom;
     private String adress;
     private String numTele;
+    private double code;
     @ManyToOne
     private Ville ville;
-    private String code;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
     @OneToMany(mappedBy = "agence")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<VoiturePricing> voiturePricing;
@@ -48,6 +40,32 @@ public class Agence implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Voiture> voitures;
 
+    public double getCode() {
+        return code;
+    }
+
+    public void setCode(double code) {
+        this.code = code;
+    }
+   
+
+    public List<VoiturePricing> getVoiturePricing() {
+        return voiturePricing;
+    }
+
+    public void setVoiturePricing(List<VoiturePricing> voiturePricing) {
+        this.voiturePricing = voiturePricing;
+    }
+
+    public List<Voiture> getVoitures() {
+        return voitures;
+    }
+
+    public void setVoitures(List<Voiture> voitures) {
+        this.voitures = voitures;
+    }
+
+    
     public Ville getVille() {
         return ville;
     }
@@ -108,7 +126,7 @@ public class Agence implements Serializable {
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
         return "com.AgenceLocation.bean.Agence[ id=" + id + " ]";
     }

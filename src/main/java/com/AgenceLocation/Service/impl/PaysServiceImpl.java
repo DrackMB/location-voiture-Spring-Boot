@@ -5,9 +5,12 @@
  */
 package com.AgenceLocation.Service.impl;
 
+import com.AgenceLocation.Repository.PaysRepository;
 import com.AgenceLocation.Service.facad.PaysService;
 import com.AgenceLocation.bean.Pays;
 import java.util.List;
+import javax.management.InstanceAlreadyExistsException;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,33 +19,41 @@ import org.springframework.stereotype.Service;
  * @author OuMaima
  */
 @Service
-public class PaysServiceImpl implements PaysService{
+@Transactional
+public class PaysServiceImpl implements PaysService {
+
     @Autowired
-    private PaysService paysService;
+    private PaysRepository paysRepository;
 
     @Override
     public Pays findByNom(String nom) {
-        //To change body of generated methods, choose Tools | Templates.
-        return paysService.findByNom(nom);
+
+        return paysRepository.findByNom(nom);
     }
 
     @Override
-    public Pays deleteByNom(String nom) {
-        //To change body of generated methods, choose Tools | Templates.
-        return paysService.deleteByNom(nom);
-    }
-
-    @Override
-    public void save(Pays pays) {
-       //To change body of generated methods, choose Tools | Templates.
-       paysService.save(pays);
-    
+    public void save(Pays pays) throws InstanceAlreadyExistsException {
+        Pays foundedPays = findByNom(pays.getNom());
+        if (foundedPays == null) {
+            paysRepository.save(pays);
+        } else {
+            throw new InstanceAlreadyExistsException("exist");
+        }
     }
 
     @Override
     public List<Pays> findAll() {
-   //To change body of generated methods, choose Tools | Templates.
-    return paysService.findAll();
+        return paysRepository.findAll();
     }
-    
+
+    @Override
+    public void deleteByNom(String nom) {
+
+        Pays foundedPayses = findByNom(nom);
+        if (foundedPayses != null) {
+            paysRepository.deleteByNom(nom);
+        }
+
+    }
+
 }

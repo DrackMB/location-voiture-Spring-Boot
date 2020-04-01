@@ -8,7 +8,13 @@ package com.AgenceLocation.WebService;
 import com.AgenceLocation.Service.facad.VilleService;
 import com.AgenceLocation.bean.Ville;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javassist.NotFoundException;
+import javax.management.InstanceAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -23,27 +30,34 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/AgenceLocation/ville")
+@CrossOrigin(origins = "htpp://localhost:4200/")
 public class VilleRest {
     
     @Autowired
     private VilleService villeService;
     
     @GetMapping("/nom/{nom}")
-    public Ville findByNom(@PathVariable String nom) {
+    public Ville findByNom(@PathVariable("nom") String nom) {
         return villeService.findByNom(nom);
     }
 
     @DeleteMapping("/nom/{nom}")
-    public int deleteByNom(@PathVariable String nom) {
+    public int deleteByNom(@PathVariable("nom") String nom) {
         return villeService.deleteByNom(nom);
     }
 
-    @PostMapping("/")
-    public void save(@RequestBody Ville ville) {
-        villeService.save(ville);
+    @PostMapping
+    public void save(@RequestBody Ville ville)  {
+        try {
+            villeService.save(ville);
+        } catch (NotFoundException ex) {
+           throw new ResponseStatusException(HttpStatus.NOT_FOUND,ex.getMessage(),ex);
+        } catch (InstanceAlreadyExistsException ex) {
+           throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage() , ex);
+        }
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Ville> findAll() {
         return villeService.findAll();
     }

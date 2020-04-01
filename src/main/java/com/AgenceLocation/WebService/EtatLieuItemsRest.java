@@ -5,11 +5,9 @@
  */
 package com.AgenceLocation.WebService;
 
-import com.AgenceLocation.Service.facad.PaysService;
-import com.AgenceLocation.bean.Pays;
+import com.AgenceLocation.Service.facad.EtatLieuItemsService;
+import com.AgenceLocation.bean.EtatLieuItems;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.management.InstanceAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,37 +26,37 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping ("/AgenceLocation/pays")
+@RequestMapping("/AgenceLocation/etatLieuItems")
 @CrossOrigin(origins = "htpp://localhost:4200/")
-
-public class PaysRest {
+public class EtatLieuItemsRest {
+    
     @Autowired
-    private PaysService paysService;
+    private EtatLieuItemsService etatLieuItemsService;
 
-    @GetMapping("/nom/{nom}")
-    public Pays findByNom(@PathVariable("nom") String nom) {
-        return paysService.findByNom(nom);
+    @GetMapping("/gravite/{gravite}")
+    public List<EtatLieuItems> findBygravite(@PathVariable("gravite") String gravite) {
+        return etatLieuItemsService.findBygravite(gravite);
     }
 
-    @DeleteMapping("/nom/{nom}")
-    public void deleteByNom(@PathVariable("nom") String nom) {
-        paysService.deleteByNom(nom);
+    @DeleteMapping("/gravite/{gravite}")
+    public int deleteByGravite(@PathVariable("gravite") String gravite) {
+        return etatLieuItemsService.deleteByGravite(gravite);
     }
 
-    @PostMapping()
-    public void save(@RequestBody Pays pays){
+     @GetMapping
+    public List<EtatLieuItems> findAll() {
+        return etatLieuItemsService.findAll();
+    }
+
+    @PostMapping
+    public int save(@RequestBody EtatLieuItems etatLieuItems){
         try {
-            paysService.save(pays);
+            return etatLieuItemsService.save(etatLieuItems);
         } catch (InstanceAlreadyExistsException ex) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage() , ex);
+           throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage() , ex);
         }
     }
     
-
-    @GetMapping()
-    public List<Pays> findAll() {
-        return paysService.findAll();
-    }
     
     
     

@@ -7,6 +7,7 @@ package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.bean.Agence;
 import java.util.List;
+import javax.management.InstanceAlreadyExistsException;
 
 /**
  *
@@ -14,12 +15,18 @@ import java.util.List;
  */
 public interface AgenceService {
 
-    public Agence findByNom(String nom);
+     List<Agence> findByNom(String nom);
 
-    public Agence deleteByNom(String nom);
+     int deleteByNom(String nom);
 
-    public void save(Agence agence);
+     int save(Agence agence)throws InstanceAlreadyExistsException;
 
-    public List<Agence> findAll();
+     List<Agence> findAll();
+    
+     List<Agence> findByVille(String nom);
+    
+     Agence findByCode(double code);
+     
+     int deleteByCode(double code);
 
 }

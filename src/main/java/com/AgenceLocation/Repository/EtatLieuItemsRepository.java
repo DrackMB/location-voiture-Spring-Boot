@@ -5,8 +5,8 @@
  */
 package com.AgenceLocation.Repository;
 
-import com.AgenceLocation.bean.Agence;
-import com.AgenceLocation.bean.Ville;
+import com.AgenceLocation.bean.Consigne;
+import com.AgenceLocation.bean.EtatLieuItems;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -16,13 +16,8 @@ import org.springframework.stereotype.Repository;
  * @author OuMaima
  */
 @Repository
- public interface AgenceRepository extends JpaRepository<Agence, Long>{
-    
-     List<Agence> findByNom(String nom);
-     int deleteByNom(String nom);
-     List<Agence> findByVille(String nom);
-     Agence findByCode(double code);
-     Agence findByNomAndVille(String nom,Ville ville);
-     int deleteByCode(double code);
-    
+public interface EtatLieuItemsRepository extends JpaRepository<EtatLieuItems, Long>{
+    public List<EtatLieuItems> findByGravite(String gravite);
+    public int deleteByGravite(String gravite);
+    public EtatLieuItems findByGraviteAndConsigne(String gravite,Consigne consigne);
 }

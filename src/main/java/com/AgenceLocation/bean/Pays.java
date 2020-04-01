@@ -5,6 +5,7 @@
  */
 package com.AgenceLocation.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
@@ -28,8 +29,11 @@ public class Pays implements Serializable {
     private String nom;
     private double code;
     @OneToMany(mappedBy = "pays")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore    
     private List<Ville> villes ;
+
+    
+    
 
     public String getNom() {
         return nom;
@@ -83,9 +87,11 @@ public class Pays implements Serializable {
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
         return "com.AgenceLocation.bean.Pays[ id=" + id + " ]";
     }
+
+    
     
 }

@@ -7,15 +7,18 @@ package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.bean.Pays;
 import java.util.List;
+import javax.management.InstanceAlreadyExistsException;
 
 /**
  *
  * @author OuMaima
  */
+
 public interface PaysService {
     public Pays findByNom(String nom);
-    public Pays deleteByNom(String nom);
-    public void save(Pays pays);
+    public void deleteByNom(String nom);
+    public void save(Pays pays)throws InstanceAlreadyExistsException;
     public List<Pays> findAll();
+ 
     
 }

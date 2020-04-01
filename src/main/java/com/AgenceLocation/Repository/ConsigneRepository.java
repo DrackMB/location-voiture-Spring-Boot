@@ -5,20 +5,23 @@
  */
 package com.AgenceLocation.Repository;
 
-import com.AgenceLocation.bean.Marque;
+import com.AgenceLocation.bean.Consigne;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author HP
+ * @author OuMaima
  */
-
 @Repository
-public interface MarqueRepository extends JpaRepository<Marque, Long> {
+public interface ConsigneRepository extends JpaRepository<Consigne, Long> {
 
-    Marque findByLibelle(String libelle);
-    
+    public Consigne findByLibelle(String libelle);
+
+    int deleteByLibelle(String Libelle);
+
+    List<Consigne> findByEtatLieuReference(String reference);
 
 }
-

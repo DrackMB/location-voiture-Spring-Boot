@@ -7,6 +7,8 @@ package com.AgenceLocation.Service.facad;
 
 import com.AgenceLocation.bean.Ville;
 import java.util.List;
+import javassist.NotFoundException;
+import javax.management.InstanceAlreadyExistsException;
 
 /**
  *
@@ -18,8 +20,11 @@ public interface VilleService {
 
     public int deleteByNom(String nom);
 
-    public void save(Ville ville);
+    public void save(Ville ville) throws  NotFoundException , InstanceAlreadyExistsException ;
 
     public List<Ville> findAll();
+    
+ 
+    
 
 }

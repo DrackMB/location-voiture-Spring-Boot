@@ -10,26 +10,49 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
- * @author dell
+ * @author OuMaima
  */
 @Entity
-public class Carburant implements Serializable {
+public class EtatLieuItems implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String libelle ;
+    private String gravite;
+   
+    @ManyToOne
+    private Consigne consigne;
 
-    public String getLibelle() {
-        return libelle;
+    @ManyToOne
+    private EtatLieu etatLieu;
+
+    public EtatLieu getEtatLieu() {
+        return etatLieu;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setEtatLieu(EtatLieu etatLieu) {
+        this.etatLieu = etatLieu;
+    }
+
+    public String getGravite() {
+        return gravite;
+    }
+
+    public void setGravite(String gravite) {
+        this.gravite = gravite;
+    }
+
+    public Consigne getConsigne() {
+        return consigne;
+    }
+
+    public void setConsigne(Consigne consigne) {
+        this.consigne = consigne;
     }
 
     public Long getId() {
@@ -50,10 +73,10 @@ public class Carburant implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Carburant)) {
+        if (!(object instanceof EtatLieuItems)) {
             return false;
         }
-        Carburant other = (Carburant) object;
+        EtatLieuItems other = (EtatLieuItems) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -62,7 +85,8 @@ public class Carburant implements Serializable {
 
     @Override
     public String toString() {
-        return "com.AgenceLocation.bean.Carburant[ id=" + id + " ]";
+        return "com.AgenceLocation.bean.EtatLieuItems[ id=" + id + " ]";
     }
-    
+
+
 }

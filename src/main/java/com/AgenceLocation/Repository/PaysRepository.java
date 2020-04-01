@@ -14,8 +14,13 @@ import org.springframework.stereotype.Repository;
  * @author OuMaima
  */
 @Repository
-public interface PaysRepository extends JpaRepository<Pays, Long>{
+public interface PaysRepository extends JpaRepository<Pays, Long> {
+
     public Pays findByNom(String nom);
-    public Pays deleteByNom(String nom);
+
+    public void deleteByNom(String nom);
+
+         
     
+
 }

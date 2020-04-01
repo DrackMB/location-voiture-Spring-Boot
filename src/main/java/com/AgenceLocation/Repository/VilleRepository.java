@@ -19,4 +19,6 @@ public interface VilleRepository extends JpaRepository<Ville, Long> {
     public Ville findByNom(String nom);
 
     public int deleteByNom(String nom);
+    
+    
 }

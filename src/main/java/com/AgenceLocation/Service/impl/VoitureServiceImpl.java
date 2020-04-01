@@ -53,7 +53,8 @@ public class VoitureServiceImpl implements VoitureService {
     @Override
     public int save(Voiture voiture) {
         Voiture foundedVoiture = findByMatricule(voiture.getMatricule());
-        Agence agences = agenceService.findByNom(voiture.getAgence().getNom());
+        Agence  agences = agenceService.findByCode(voiture.getAgence().getCode());
+        
         Categorie categories = categorieService.findByLibelle(voiture.getCategorie().getLibelle());
         Carburant carburants = carbuantService.findByLibelle(voiture.getCarburant().getLibelle());
         Transmition transmitions = transmitionService.findByLibelle(voiture.getTransmition().getLibelle());

@@ -10,19 +10,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
- * @author dell
+ * @author OuMaima
  */
 @Entity
-public class Carburant implements Serializable {
+public class Consigne implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String libelle ;
+    private String libelle;
+    @ManyToOne
+    private EtatLieu etatLieu;
+
+    public EtatLieu getEtatLieu() {
+        return etatLieu;
+    }
+
+    public void setEtatLieu(EtatLieu etatLieu) {
+        this.etatLieu = etatLieu;
+    }
 
     public String getLibelle() {
         return libelle;
@@ -50,19 +61,19 @@ public class Carburant implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Carburant)) {
+        if (!(object instanceof Consigne)) {
             return false;
         }
-        Carburant other = (Carburant) object;
+        Consigne other = (Consigne) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "com.AgenceLocation.bean.Carburant[ id=" + id + " ]";
+        return "com.AgenceLocation.bean.Consigne[ id=" + id + " ]";
     }
-    
+
 }
