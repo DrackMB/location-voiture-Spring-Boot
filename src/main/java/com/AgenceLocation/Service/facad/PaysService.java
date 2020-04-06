@@ -16,8 +16,8 @@ import javax.management.InstanceAlreadyExistsException;
 
 public interface PaysService {
     public Pays findByNom(String nom);
-    public void deleteByNom(String nom);
-    public void save(Pays pays)throws InstanceAlreadyExistsException;
+    public int deleteByNom(String nom);
+    public int save(Pays pays)throws InstanceAlreadyExistsException;
     public List<Pays> findAll();
  
     

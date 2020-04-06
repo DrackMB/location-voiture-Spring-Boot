@@ -26,8 +26,8 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("/AgenceLocation/etatLieuItems")
-@CrossOrigin(origins = "htpp://localhost:4200/")
+@RequestMapping("agenceLocation/etatLieuItems")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class EtatLieuItemsRest {
     
     @Autowired
@@ -43,12 +43,12 @@ public class EtatLieuItemsRest {
         return etatLieuItemsService.deleteByGravite(gravite);
     }
 
-     @GetMapping
+     @GetMapping("/")
     public List<EtatLieuItems> findAll() {
         return etatLieuItemsService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public int save(@RequestBody EtatLieuItems etatLieuItems){
         try {
             return etatLieuItemsService.save(etatLieuItems);

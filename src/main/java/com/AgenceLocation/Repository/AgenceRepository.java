@@ -21,8 +21,8 @@ import org.springframework.stereotype.Repository;
      List<Agence> findByNom(String nom);
      int deleteByNom(String nom);
      List<Agence> findByVille(String nom);
-     Agence findByCode(double code);
+     Agence findByCode(String  code);
      Agence findByNomAndVille(String nom,Ville ville);
-     int deleteByCode(double code);
+     int deleteByCode(String code);
     
 }

@@ -28,8 +28,8 @@ public class Agence implements Serializable {
     private Long id;
     private String nom;
     private String adress;
-    private String numTele;
-    private double code;
+    private Long  numTele;
+    private String code;
     @ManyToOne
     private Ville ville;
     @OneToMany(mappedBy = "agence")
@@ -40,11 +40,11 @@ public class Agence implements Serializable {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Voiture> voitures;
 
-    public double getCode() {
+    public String  getCode() {
         return code;
     }
 
-    public void setCode(double code) {
+    public void setCode(String   code) {
         this.code = code;
     }
    
@@ -90,11 +90,11 @@ public class Agence implements Serializable {
         this.adress = adress;
     }
 
-    public String getNumTele() {
+    public Long  getNumTele() {
         return numTele;
     }
 
-    public void setNumTele(String numTele) {
+    public void setNumTele(Long  numTele) {
         this.numTele = numTele;
     }
 

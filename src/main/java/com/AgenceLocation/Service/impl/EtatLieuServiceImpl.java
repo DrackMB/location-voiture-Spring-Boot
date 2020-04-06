@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
  * @author OuMaima
  */
 @Service
-@Transactional
 public class EtatLieuServiceImpl implements EtatLieuService {
 
     @Autowired
@@ -76,6 +75,7 @@ public class EtatLieuServiceImpl implements EtatLieuService {
     }
 
     @Override
+    @Transactional
     public int deleteByReference(String reference) {
        
         EtatLieu foundeds = findByReference(reference);
@@ -106,6 +106,7 @@ public class EtatLieuServiceImpl implements EtatLieuService {
     }
 
     @Override
+    @Transactional
     public int deleteByLocationDetailLocationClientCin(String cin) {
         
         List<EtatLieu> ET = findByLocationDetailLocationClientCin(cin);
@@ -132,6 +133,7 @@ public class EtatLieuServiceImpl implements EtatLieuService {
     }
 
     @Override
+    @Transactional
     public int deleteByLocationDetailVoitureMatricule(String matricule) {
         
       

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
  * @author OuMaima
  */
 @Service
-@Transactional
+
 public class EtatLieuItemsServiceImpl implements EtatLieuItemsService {
 
     @Autowired
@@ -33,6 +33,7 @@ public class EtatLieuItemsServiceImpl implements EtatLieuItemsService {
     }
 
     @Override
+    @Transactional
     public int deleteByGravite(String gravite) {
 
         return etatLieuItemsRepository.deleteByGravite(gravite);

@@ -24,7 +24,7 @@ import org.springframework.web.client.HttpClientErrorException;
  * @author OuMaima
  */
 @Service
-@Transactional
+
 public class VilleServiceImpl implements VilleService {
 
     @Autowired
@@ -34,16 +34,16 @@ public class VilleServiceImpl implements VilleService {
 
     @Override
     public Ville findByNom(String nom) {
-        if (nom == null) {
-            nom = "";
-        }
+       
         return villeRepository.findByNom(nom);
     }
 
     @Override
+    @Transactional
     public int deleteByNom(String nom) {
 
         Ville foundedVille = findByNom(nom);
+        
         if (foundedVille != null) {
 
             return villeRepository.deleteByNom(nom);
@@ -52,7 +52,7 @@ public class VilleServiceImpl implements VilleService {
     }
 
     @Override
-    public void save(Ville ville) throws NotFoundException, InstanceAlreadyExistsException {
+    public int save(Ville ville) throws NotFoundException, InstanceAlreadyExistsException {
 
         Ville foundedVille = findByNom(ville.getNom());
         if (foundedVille == null) {
@@ -62,9 +62,11 @@ public class VilleServiceImpl implements VilleService {
             }
             // paye.save(ville.getPays());
             villeRepository.save(ville);
+            return 1;
 
         } else {
             throw new InstanceAlreadyExistsException("exist");
+            
         }
     }
 

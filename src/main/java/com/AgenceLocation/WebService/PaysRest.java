@@ -28,8 +28,8 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping ("/AgenceLocation/pays")
-@CrossOrigin(origins = "htpp://localhost:4200/")
+@RequestMapping ("agenceLocation/pays")
+@CrossOrigin(origins = {"http://localhost:4200"})
 
 public class PaysRest {
     @Autowired
@@ -41,21 +41,23 @@ public class PaysRest {
     }
 
     @DeleteMapping("/nom/{nom}")
-    public void deleteByNom(@PathVariable("nom") String nom) {
-        paysService.deleteByNom(nom);
+    public int deleteByNom(@PathVariable("nom") String nom) {
+        return paysService.deleteByNom(nom);
     }
 
-    @PostMapping()
-    public void save(@RequestBody Pays pays){
+    @PostMapping("/")
+    public int save(@RequestBody Pays pays){
         try {
             paysService.save(pays);
+              return 1;
         } catch (InstanceAlreadyExistsException ex) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage() , ex);
         }
+  
     }
     
 
-    @GetMapping()
+    @GetMapping("/")
     public List<Pays> findAll() {
         return paysService.findAll();
     }

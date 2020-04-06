@@ -7,6 +7,7 @@ package com.AgenceLocation.WebService;
 
 import com.AgenceLocation.Service.facad.AgenceService;
 import com.AgenceLocation.bean.Agence;
+import com.AgenceLocation.bean.Ville;
 import java.util.List;
 import javax.management.InstanceAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,14 +28,15 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("/AgenceLocation/agence")
-@CrossOrigin(origins = "htpp://localhost:4200/")
+@RequestMapping("agenceLocation/agence")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class AgenceRest {
+
     @Autowired
     private AgenceService agenceService;
 
     @DeleteMapping("/code/{code}")
-    public int deleteByCode(@PathVariable("code") double code) {
+    public int deleteByCode(@PathVariable("code") String  code) {
         return agenceService.deleteByCode(code);
     }
 
@@ -47,16 +50,16 @@ public class AgenceRest {
         return agenceService.deleteByNom(nom);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public int save(@RequestBody Agence agence) {
         try {
             return agenceService.save(agence);
         } catch (InstanceAlreadyExistsException ex) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage() , ex);
+            throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage(), ex);
         }
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Agence> findAll() {
         return agenceService.findAll();
     }
@@ -67,12 +70,13 @@ public class AgenceRest {
     }
 
     @GetMapping("/code/{code}")
-    public Agence findByCode(@PathVariable("code") double code) {
+    public Agence findByCode(@PathVariable("code") String  code) {
         return agenceService.findByCode(code);
     }
- 
-    
-    
-    
-    
+
+    @PutMapping("/nom/{nom}/adress/{adress}/numTele/{numTele}/code/{code}/nvCode/{nvCode}/ville/{ville}/")
+    public int updateAgence(@PathVariable String nom, @PathVariable String adress, @PathVariable Long numTele, @PathVariable String  code, @PathVariable String  nvCode, @PathVariable Ville ville) {
+        return agenceService.updateAgence(nom, adress, numTele, code, nvCode, ville);
+    }
+
 }

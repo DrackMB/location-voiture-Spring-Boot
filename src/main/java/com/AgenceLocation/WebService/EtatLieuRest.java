@@ -34,22 +34,23 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("/AgenceLocation/etatLieu")
-@CrossOrigin(origins = "htpp://localhost:4200/")
+@RequestMapping("agenceLocation/etatLieu")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class EtatLieuRest {
 
     @Autowired
     private EtatLieuService etatLieuService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<EtatLieu> findAll() {
         return etatLieuService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/")
     public int save(@RequestBody EtatLieu etatLieu) {
-        try {
-            return etatLieuService.save(etatLieu);
+        try {   
+            etatLieuService.save(etatLieu);
+            return 1;
         } catch (InstanceAlreadyExistsException ex) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage(), ex);
         }

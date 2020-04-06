@@ -29,8 +29,8 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("/AgenceLocation/ville")
-@CrossOrigin(origins = "htpp://localhost:4200/")
+@RequestMapping("agenceLocation/ville")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class VilleRest {
     
     @Autowired
@@ -46,10 +46,11 @@ public class VilleRest {
         return villeService.deleteByNom(nom);
     }
 
-    @PostMapping
-    public void save(@RequestBody Ville ville)  {
+    @PostMapping("/")
+    public int save(@RequestBody Ville ville)  {
         try {
             villeService.save(ville);
+            return 1;
         } catch (NotFoundException ex) {
            throw new ResponseStatusException(HttpStatus.NOT_FOUND,ex.getMessage(),ex);
         } catch (InstanceAlreadyExistsException ex) {
@@ -57,7 +58,7 @@ public class VilleRest {
         }
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Ville> findAll() {
         return villeService.findAll();
     }

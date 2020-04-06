@@ -55,6 +55,7 @@ public class VoitureServiceImpl implements VoitureService {
         Voiture foundedVoiture = findByMatricule(voiture.getMatricule());
         Agence  agences = agenceService.findByCode(voiture.getAgence().getCode());
         
+        
         Categorie categories = categorieService.findByLibelle(voiture.getCategorie().getLibelle());
         Carburant carburants = carbuantService.findByLibelle(voiture.getCarburant().getLibelle());
         Transmition transmitions = transmitionService.findByLibelle(voiture.getTransmition().getLibelle());

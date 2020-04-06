@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
  * @author OuMaima
  */
 @Service
-@Transactional
 public class ConsigneServiceImpl implements ConsigneService {
 
     @Autowired
@@ -55,6 +54,7 @@ public class ConsigneServiceImpl implements ConsigneService {
     }
 
     @Override
+    @Transactional
     public int deleteByLibelle(String Libelle) {
         Consigne foundedConsigne = findByLibelle(Libelle);
         if (foundedConsigne != null) {

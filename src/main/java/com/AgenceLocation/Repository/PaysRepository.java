@@ -18,7 +18,7 @@ public interface PaysRepository extends JpaRepository<Pays, Long> {
 
     public Pays findByNom(String nom);
 
-    public void deleteByNom(String nom);
+    public int deleteByNom(String nom);
 
          
     

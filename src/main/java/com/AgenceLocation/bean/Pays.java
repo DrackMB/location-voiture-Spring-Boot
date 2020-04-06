@@ -27,10 +27,10 @@ public class Pays implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    private double code;
+    private Long code;
     @OneToMany(mappedBy = "pays")
-    @JsonIgnore    
-    private List<Ville> villes ;
+     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)   
+    private List<Ville> ville;
 
     
     
@@ -43,20 +43,20 @@ public class Pays implements Serializable {
         this.nom = nom;
     }
 
-    public double getCode() {
+    public Long getCode() {
         return code;
     }
 
-    public void setCode(double code) {
+    public void setCode(Long code) {
         this.code = code;
     }
 
-    public List<Ville> getVilles() {
-        return villes;
+    public List<Ville> getVille() {
+        return ville;
     }
 
-    public void setVilles(List<Ville> villes) {
-        this.villes = villes;
+    public void setVille(List<Ville> ville) {
+        this.ville = ville;
     }
 
     public Long getId() {

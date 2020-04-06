@@ -20,7 +20,7 @@ public interface VilleService {
 
     public int deleteByNom(String nom);
 
-    public void save(Ville ville) throws  NotFoundException , InstanceAlreadyExistsException ;
+    public int save(Ville ville) throws  NotFoundException , InstanceAlreadyExistsException ;
 
     public List<Ville> findAll();
     

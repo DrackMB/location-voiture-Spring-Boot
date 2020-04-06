@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
  * @author OuMaima
  */
 @Service
-@Transactional
+
 public class PaysServiceImpl implements PaysService {
 
     @Autowired
@@ -32,13 +32,15 @@ public class PaysServiceImpl implements PaysService {
     }
 
     @Override
-    public void save(Pays pays) throws InstanceAlreadyExistsException {
+    public int save(Pays pays) throws InstanceAlreadyExistsException {
         Pays foundedPays = findByNom(pays.getNom());
         if (foundedPays == null) {
             paysRepository.save(pays);
+            return 1;
         } else {
             throw new InstanceAlreadyExistsException("exist");
         }
+        
     }
 
     @Override
@@ -47,13 +49,16 @@ public class PaysServiceImpl implements PaysService {
     }
 
     @Override
-    public void deleteByNom(String nom) {
+    @Transactional
+    public int deleteByNom(String nom) {
 
         Pays foundedPayses = findByNom(nom);
         if (foundedPayses != null) {
             paysRepository.deleteByNom(nom);
+            return 1;
         }
-
+ 
+        return -1;
     }
 
 }

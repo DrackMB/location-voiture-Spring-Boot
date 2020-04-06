@@ -28,13 +28,13 @@ public class Ville implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    private double code;
+    private Long code;
     @ManyToOne
     private Pays pays;
     @OneToMany(mappedBy = "ville")
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @JsonIgnore 
-    private List<Agence> agences;
+     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Agence> agence;
 
    
     
@@ -47,11 +47,11 @@ public class Ville implements Serializable {
         this.nom = nom;
     }
 
-    public double getCode() {
+    public Long getCode() {
         return code;
     }
 
-    public void setCode(double code) {
+    public void setCode(Long code) {
         this.code = code;
     }
 
@@ -63,12 +63,12 @@ public class Ville implements Serializable {
         this.pays = pays;
     }
 
-    public List<Agence> getAgences() {
-        return agences;
+    public List<Agence> getAgence() {
+        return agence;
     }
 
-    public void setAgences(List<Agence> agences) {
-        this.agences = agences;
+    public void setAgence(List<Agence> agences) {
+        this.agence = agences;
     }
 
     public Long getId() {

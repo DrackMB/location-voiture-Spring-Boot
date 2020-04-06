@@ -8,6 +8,7 @@ package com.AgenceLocation.Service.impl;
 import com.AgenceLocation.Repository.AgenceRepository;
 import com.AgenceLocation.Service.facad.AgenceService;
 import com.AgenceLocation.bean.Agence;
+import com.AgenceLocation.bean.Ville;
 import java.util.ArrayList;
 import java.util.List;
 import javax.management.InstanceAlreadyExistsException;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
  * @author OuMaima
  */
 @Service
-@Transactional
+
 public class AgenceServiceImpl implements AgenceService {
 
     @Autowired
@@ -33,6 +34,7 @@ public class AgenceServiceImpl implements AgenceService {
     }
 
     @Override
+    @Transactional
     public int deleteByNom(String nom) {
         //if(nom == null) nom="";
         List<Agence> foundedAgences = findByNom(nom);
@@ -44,12 +46,12 @@ public class AgenceServiceImpl implements AgenceService {
 
     @Override
     public int save(Agence agence) throws InstanceAlreadyExistsException {
-        if ( agenceRepository.findByNomAndVille(agence.getNom(), agence.getVille()) == null) {
+        if (agenceRepository.findByNomAndVille(agence.getNom(), agence.getVille()) == null) {
             agenceRepository.save(agence);
             return 1;
         }
-        
-       throw new InstanceAlreadyExistsException("exist");
+
+        throw new InstanceAlreadyExistsException("exist");
     }
 
     @Override
@@ -63,12 +65,12 @@ public class AgenceServiceImpl implements AgenceService {
     }
 
     @Override
-    public Agence findByCode(double code) {
+    public Agence findByCode(String code) {
         return agenceRepository.findByCode(code);
     }
 
     @Override
-    public int deleteByCode(double code) {
+    public int deleteByCode(String  code) {
 
         Agence foundedAgence = findByCode(code);
         if (foundedAgence != null) {
@@ -77,5 +79,23 @@ public class AgenceServiceImpl implements AgenceService {
         }
         return -1;
 
+    }
+
+    @Override
+    public int updateAgence(String nom, String adress, Long numTele,String code, String  nvCode, Ville ville) {
+
+        Agence foundedAgence = agenceRepository.findByCode(code);
+        if (nvCode == null) {
+            return -1;
+        } else {
+
+            foundedAgence.setNom(nom);
+            foundedAgence.setAdress(adress);
+            foundedAgence.setNumTele(numTele);
+            foundedAgence.setCode(nvCode);
+            foundedAgence.setVille(ville);
+            agenceRepository.save(foundedAgence);
+            return 1;
+        }
     }
 }

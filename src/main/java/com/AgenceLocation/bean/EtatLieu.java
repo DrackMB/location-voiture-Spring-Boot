@@ -7,6 +7,7 @@ package com.AgenceLocation.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -41,12 +42,14 @@ public class EtatLieu implements Serializable {
     private LocationDetail locationDetail;
     private String description;
 
-    @JsonIgnore
+   
     @OneToMany(mappedBy = "etatLieu")
+     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Consigne> consigne;
 
-    @JsonIgnore
+    
     @OneToMany(mappedBy = "etatLieu")
+     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<EtatLieuItems> etatLieuTtems;
 
     public Date getDateEtatLieu() {

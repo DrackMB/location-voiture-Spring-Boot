@@ -28,8 +28,8 @@ import org.springframework.web.server.ResponseStatusException;
  * @author OuMaima
  */
 @RestController
-@RequestMapping("/AgenceLocation/consigne")
-@CrossOrigin(origins = "htpp://localhost:4200/")
+@RequestMapping("agenceLocation/consigne")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class ConsigneRest {
     @Autowired
     private ConsigneService consigneService;
@@ -39,16 +39,17 @@ public class ConsigneRest {
         return consigneService.findByEtatLieuReference(reference);
     }
 
-    @PostMapping
+    @PostMapping("/")
     public int save(@RequestBody Consigne consigne)  {
         try {
-            return consigneService.save(consigne);
+            consigneService.save(consigne);
+            return 1;
         } catch (InstanceAlreadyExistsException ex) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage() , ex);
         }
     }
 
-    @GetMapping
+    @GetMapping("/")
     public List<Consigne> findAll() {
         return consigneService.findAll();
     }
